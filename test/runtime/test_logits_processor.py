@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import sys
+from dataclasses import replace
 from types import SimpleNamespace
 
 # CI Registration (parsed via AST, runtime no-op)
@@ -14,6 +15,7 @@ register_cuda_ci(est_time=90, suite="runtime-1gpu")
 
 import pytest  # noqa: E402
 import torch  # noqa: E402
+from transformers import PretrainedConfig  # noqa: E402
 
 import tokenspeed.runtime.distributed.comm_manager as comm_manager_module  # noqa: E402
 import tokenspeed.runtime.layers.logits_processor as logits_processor_module  # noqa: E402
@@ -167,6 +169,83 @@ def test_tp_logits_gather_preserves_dtype(monkeypatch, dtype, cached):
     else:
         assert calls == ["collective"]
         assert output.argmax(-1).item() == 1
+
+
+@pytest.mark.parametrize("rank", [0, 1])
+@pytest.mark.parametrize("dtype", [torch.float32, torch.bfloat16])
+@pytest.mark.parametrize("do_argmax", [False, True])
+@pytest.mark.parametrize("require_full_vocab", [False, True])
+def test_ascend_tp_logits_gather_preserves_vocab_order(
+    monkeypatch, rank, dtype, do_argmax, require_full_vocab
+):
+    """Ascend gathers real vocab shards without entering CUDA-only setup."""
+    platform = replace(logits_processor_module.current_platform(), vendor="ascend")
+    monkeypatch.setattr(logits_processor_module, "current_platform", lambda: platform)
+    monkeypatch.setattr(
+        torch.cuda,
+        "is_current_stream_capturing",
+        lambda: pytest.fail("Ascend logits must not query a CUDA stream"),
+    )
+    monkeypatch.setitem(global_server_args_dict, "logprob_order", "torch")
+    monkeypatch.setitem(global_server_args_dict, "numerics", "default")
+    vocab_size, local_vocab, hidden_size = 8192, 4096, 2
+    processor = LogitsProcessor(
+        config=PretrainedConfig(vocab_size=vocab_size, model_type="test"),
+        tp_rank=rank,
+        tp_size=2,
+        tp_group=(0, 1),
+        do_argmax=do_argmax,
+        dp_lm_head_tp=False,
+    )
+    hidden = torch.tensor([[1, 2], [2, 1]], dtype=dtype)
+    weight = torch.zeros((vocab_size, hidden_size), dtype=dtype)
+    weight[7] = torch.tensor([1, 4], dtype=dtype)
+    weight[local_vocab + 11] = torch.tensor([4, 1], dtype=dtype)
+    head = torch.nn.Linear(hidden_size, local_vocab, bias=False, dtype=dtype)
+    head.weight.data.copy_(weight[rank * local_vocab : (rank + 1) * local_vocab])
+    local_logits = [hidden @ shard.T for shard in weight.chunk(2)]
+
+    def collective(output, logits, group):
+        assert group == (0, 1)
+        torch.testing.assert_close(logits, local_logits[rank], rtol=0, atol=0)
+        output.copy_(torch.cat(local_logits, dim=0))
+
+    # Stand in only for the two-process collective; the processor, projection,
+    # per-rank weights and vocab reassembly use their real implementations.
+    monkeypatch.setattr(logits_processor_module, "all_gather_single", collective)
+    metadata = LogitsMetadata(forward_mode=ForwardMode.DECODE, query_shard=None)
+    for _ in range(2):
+        logits = processor._get_logits(
+            hidden, head, metadata, require_full_vocab=require_full_vocab
+        )
+        expected = hidden @ weight.T
+        torch.testing.assert_close(logits, expected, rtol=0, atol=0)
+        assert logits.dtype == dtype
+        assert logits.argmax(-1).tolist() == [7, local_vocab + 11]
+
+
+def test_ascend_distributed_argmax_uses_gather_fallback(monkeypatch):
+    platform = replace(logits_processor_module.current_platform(), vendor="ascend")
+    monkeypatch.setattr(logits_processor_module, "current_platform", lambda: platform)
+    monkeypatch.setattr(
+        torch.cuda,
+        "is_current_stream_capturing",
+        lambda: pytest.fail("Ascend argmax must not query a CUDA stream"),
+    )
+    processor = LogitsProcessor(
+        config=PretrainedConfig(vocab_size=8192),
+        tp_rank=0,
+        tp_size=2,
+        tp_group=(0, 1),
+        dp_lm_head_tp=False,
+    )
+    head = torch.nn.Linear(2, 4096, bias=False, dtype=torch.bfloat16)
+    assert (
+        processor.acquire_dist_argmax_state(
+            head, max_M=8, skip_ping_pong=False, dtype=torch.bfloat16
+        )
+        is None
+    )
 
 
 @pytest.mark.parametrize(
@@ -600,6 +679,8 @@ def test_capture_takes_the_plain_gather_and_leaves_the_gate_for_later(monkeypatc
         lambda *a, **k: pytest.fail("the sentinel must never reach the gather"),
     )
     monkeypatch.setattr(torch.cuda, "is_current_stream_capturing", lambda: True)
+    platform = replace(logits_processor_module.current_platform(), vendor="nvidia")
+    monkeypatch.setattr(logits_processor_module, "current_platform", lambda: platform)
     monkeypatch.setattr(
         logits_processor_module,
         "all_gather_single",

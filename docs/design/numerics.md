@@ -432,6 +432,11 @@ while the prompt-row chunks ask `_get_logits` for a private full-vocab tensor
 log-softmax may still be reading its result when a faster rank issues the next
 chunk's gather. The gathered values are identical either way.
 
+On Ascend the vocab shards are gathered through HCCL. NVIDIA multicast and
+distributed-argmax initialization, including CUDA stream-capture queries,
+are bypassed; both greedy sampling and full-vocab logprobs use the gathered
+logits in rank order.
+
 Prompt logprobs are gathered in position chunks of
 `--input-logprob-chunk-tokens` rows so the transient `[rows, vocab]` logits
 stay bounded. The chunk size is a sizing knob, not a numerics one: the
@@ -595,3 +600,8 @@ quantized GEMM leaf exists, so their linears would select shape-dependent
 ones) and a vocabulary that is not a multiple of `MEGATRON_VOCAB_BLOCK`
 (the envelope's logprob order folds fixed blocks of it; MoE TP other than 1
 is refused by `resolve_numerics` for the same reason on the MoE side).
+
+The HCCL adapter uses PyTorch's public `all_gather_into_tensor` and
+`reduce_scatter_tensor` collectives. The backend method names remain
+`all_gather_single` and `reduce_scatter`; they do not require newer PyTorch
+collective aliases that are absent from the torch-npu 2.9 deployment.

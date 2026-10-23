@@ -1,0 +1,3002 @@
+{
+  "measurement_date": "2026-10-23",
+  "hardware": "Ascend 910C; two chips on one card",
+  "precision": "BF16 weights and activations; FP32 GDN state; HF32 disabled",
+  "source_base": "f97e0a7a3b34870b8d9e75d2bf4584a18d2f9a82",
+  "validation": [
+    {
+      "model": "Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "tp1_tp2_strict_pass_at_0_10": true,
+      "tp1_tp2_requests": [
+        {
+          "case_id": "A17",
+          "run_id": "A-before",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.055402398109436035,
+            0.0357147753238678,
+            0.000210493803024292,
+            0.009478449821472168,
+            0.006193876266479492,
+            0.0016371197998523712,
+            0.06807541847229004,
+            0.047342896461486816,
+            0.021880269050598145,
+            0.007704131305217743,
+            2.54213809967041e-05,
+            0.00011467933654785156,
+            0.007485091686248779,
+            4.656612873077393e-06,
+            6.917119026184082e-05,
+            0.0002584308385848999
+          ],
+          "max_absolute_logprob_error": 0.06807541847229004,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "B129",
+          "run_id": "B",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.020131230354309082,
+            6.514787673950195e-05,
+            0.01704999804496765,
+            0.0005421638488769531,
+            0.01191866397857666,
+            0.0007755234837532043,
+            0.00024079554714262486,
+            0.0005249455571174622,
+            0.0001140795648097992,
+            0.0003889240324497223,
+            0.0001168262679129839,
+            1.7850659787654877e-05,
+            0.00012846104800701141,
+            6.1639584600925446e-06,
+            0.013425312936306,
+            0.0010002925992012024
+          ],
+          "max_absolute_logprob_error": 0.020131230354309082,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "A17",
+          "run_id": "A-after",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.055402398109436035,
+            0.0357147753238678,
+            0.000210493803024292,
+            0.009478449821472168,
+            0.006193876266479492,
+            0.0016371197998523712,
+            0.06807541847229004,
+            0.047342896461486816,
+            0.021880269050598145,
+            0.007704131305217743,
+            2.54213809967041e-05,
+            0.00011467933654785156,
+            0.007485091686248779,
+            4.656612873077393e-06,
+            6.917119026184082e-05,
+            0.0002584308385848999
+          ],
+          "max_absolute_logprob_error": 0.06807541847229004,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "C513",
+          "run_id": "C513",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.06488645076751709,
+            0.003040313720703125,
+            0.001657038927078247,
+            0.0004647970199584961,
+            0.04007452726364136,
+            0.0008095502853393555,
+            2.0794570446014404e-05,
+            7.38061498850584e-06,
+            0.0004354286938905716,
+            1.0476680472493172e-05,
+            3.557372838258743e-05,
+            0.0011091046035289764,
+            0.0021322444081306458,
+            0.00041438033804297447,
+            0.005258530378341675,
+            8.172821253538132e-06
+          ],
+          "max_absolute_logprob_error": 0.06488645076751709,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        }
+      ],
+      "repeated_request_identical": true,
+      "tp1_maximum_sampled_allocated_bytes": 2108438016,
+      "tp1_physical_chips": [
+        2
+      ],
+      "workers": [
+        {
+          "rank": 0,
+          "pid": 1840926,
+          "logical_device": 0,
+          "physical_chip": 2,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 1227712000
+        },
+        {
+          "rank": 1,
+          "pid": 1840927,
+          "logical_device": 1,
+          "physical_chip": 3,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 1237648896
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "tp1_tp2_strict_pass_at_0_10": false,
+      "tp1_tp2_requests": [
+        {
+          "case_id": "A17",
+          "run_id": "A-before",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0009496584534645081,
+            0.011598363518714905,
+            0.0004406571388244629,
+            0.015424013137817383,
+            0.024914026260375977,
+            1.3750046491622925e-05,
+            0.010995090007781982,
+            4.3470412492752075e-05,
+            0.022311121225357056,
+            0.0006062649190425873,
+            0.0005646497011184692,
+            0.005877792835235596,
+            0.026449203491210938,
+            3.1378818675875664e-05,
+            0.0006768815219402313,
+            0.00231265090405941
+          ],
+          "max_absolute_logprob_error": 0.026449203491210938,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "B129",
+          "run_id": "B",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 2,
+          "first_output_mismatch_step": 2,
+          "greedy_token_agreement_count": 2,
+          "full_greedy_token_agreement": false,
+          "comparable_logprob_count": 2,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0025020092725753784,
+            0.0015406161546707153
+          ],
+          "max_absolute_logprob_error": 0.0025020092725753784,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": false,
+          "strict_pass": false,
+          "greedy_disagreements": [
+            {
+              "step": 2,
+              "native_token_id": 561,
+              "reference_greedy_token_id": 198,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": true
+            },
+            {
+              "step": 3,
+              "native_token_id": 2542,
+              "reference_greedy_token_id": 760,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 4,
+              "native_token_id": 314,
+              "reference_greedy_token_id": 2542,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 5,
+              "native_token_id": 1330,
+              "reference_greedy_token_id": 314,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 6,
+              "native_token_id": 321,
+              "reference_greedy_token_id": 1330,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 7,
+              "native_token_id": 2250,
+              "reference_greedy_token_id": 321,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 8,
+              "native_token_id": 369,
+              "reference_greedy_token_id": 2250,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 9,
+              "native_token_id": 4097,
+              "reference_greedy_token_id": 369,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 10,
+              "native_token_id": 13,
+              "reference_greedy_token_id": 4097,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 11,
+              "native_token_id": 561,
+              "reference_greedy_token_id": 13,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 12,
+              "native_token_id": 2542,
+              "reference_greedy_token_id": 198,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 13,
+              "native_token_id": 314,
+              "reference_greedy_token_id": 760,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 14,
+              "native_token_id": 1330,
+              "reference_greedy_token_id": 2542,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            },
+            {
+              "step": 15,
+              "native_token_id": 321,
+              "reference_greedy_token_id": 314,
+              "reference_top2_logit_margin": null,
+              "conditioning_history_matches": false
+            }
+          ]
+        },
+        {
+          "case_id": "A17",
+          "run_id": "A-after",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0009496584534645081,
+            0.011598363518714905,
+            0.0004406571388244629,
+            0.015424013137817383,
+            0.024914026260375977,
+            1.3750046491622925e-05,
+            0.010995090007781982,
+            4.3470412492752075e-05,
+            0.022311121225357056,
+            0.0006062649190425873,
+            0.0005646497011184692,
+            0.005877792835235596,
+            0.026449203491210938,
+            3.1378818675875664e-05,
+            0.0006768815219402313,
+            0.00231265090405941
+          ],
+          "max_absolute_logprob_error": 0.026449203491210938,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "C513",
+          "run_id": "C513",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.06463545560836792,
+            0.009086370468139648,
+            0.030150771141052246,
+            0.0010492801666259766,
+            0.0064414143562316895,
+            0.00039570778608322144,
+            0.00010761059820652008,
+            0.00011643720790743828,
+            0.001321928109973669,
+            9.691505692899227e-05,
+            1.9906554371118546e-05,
+            0.0023268312215805054,
+            6.661377847194672e-05,
+            0.00017326325178146362,
+            0.0018279775977134705,
+            0.00031361356377601624
+          ],
+          "max_absolute_logprob_error": 0.06463545560836792,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        }
+      ],
+      "repeated_request_identical": true,
+      "tp1_maximum_sampled_allocated_bytes": 9438832640,
+      "tp1_physical_chips": [
+        2
+      ],
+      "workers": [
+        {
+          "rank": 0,
+          "pid": 1890894,
+          "logical_device": 0,
+          "physical_chip": 2,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 4918636032
+        },
+        {
+          "rank": 1,
+          "pid": 1890895,
+          "logical_device": 1,
+          "physical_chip": 3,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 4904098816
+        }
+      ],
+      "tp2_transformers_same_history": {
+        "strict_pass_at_0_10": true,
+        "requests": [
+          {
+            "case_id": "A17",
+            "run_id": "A-before",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.004215843975543976,
+              0.01597471535205841,
+              0.0020407140254974365,
+              0.01889955997467041,
+              0.061104536056518555,
+              5.276966840028763e-05,
+              0.019441843032836914,
+              0.0014403779059648514,
+              0.001087680459022522,
+              0.002803519368171692,
+              0.0010246038436889648,
+              0.0366746187210083,
+              0.0032090842723846436,
+              0.000534833176061511,
+              0.007219672203063965,
+              0.00011982046999037266
+            ],
+            "max_absolute_logprob_error": 0.061104536056518555,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "B129",
+            "run_id": "B",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.025538146495819092,
+              0.011991828680038452,
+              0.012979507446289062,
+              0.012872539460659027,
+              0.000913009513169527,
+              0.004759073257446289,
+              0.00016750209033489227,
+              0.001009039580821991,
+              0.0006247097626328468,
+              0.0010855132713913918,
+              0.0008734110742807388,
+              0.003603607416152954,
+              0.0003002381417900324,
+              1.9776925910264254e-05,
+              0.0001659030094742775,
+              1.9179657101631165e-05
+            ],
+            "max_absolute_logprob_error": 0.025538146495819092,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "A17",
+            "run_id": "A-after",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.004215843975543976,
+              0.01597471535205841,
+              0.0020407140254974365,
+              0.01889955997467041,
+              0.061104536056518555,
+              5.276966840028763e-05,
+              0.019441843032836914,
+              0.0014403779059648514,
+              0.001087680459022522,
+              0.002803519368171692,
+              0.0010246038436889648,
+              0.0366746187210083,
+              0.0032090842723846436,
+              0.000534833176061511,
+              0.007219672203063965,
+              0.00011982046999037266
+            ],
+            "max_absolute_logprob_error": 0.061104536056518555,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "C513",
+            "run_id": "C513",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.037376344203948975,
+              0.03393977880477905,
+              0.004150509834289551,
+              0.02581799030303955,
+              0.010749638080596924,
+              0.007517755031585693,
+              0.0016530174762010574,
+              0.0005211695097386837,
+              0.0013706022873520851,
+              0.00015502097085118294,
+              0.0001888512633740902,
+              0.0045672208070755005,
+              0.0006706621497869492,
+              0.015031635761260986,
+              0.002652417868375778,
+              1.8415972590446472e-05
+            ],
+            "max_absolute_logprob_error": 0.037376344203948975,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          }
+        ]
+      }
+    },
+    {
+      "model": "Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "tp1_tp2_strict_pass_at_0_10": false,
+      "tp1_tp2_requests": [
+        {
+          "case_id": "A17",
+          "run_id": "A-before",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0014213025569915771,
+            0.0008928030729293823,
+            0.001108124852180481,
+            0.02310776710510254,
+            0.10425269603729248,
+            0.002264188602566719,
+            0.03477299213409424,
+            1.0702991858124733e-05,
+            0.00200624018907547,
+            0.00019788183271884918,
+            0.009679257869720459,
+            0.011859685182571411,
+            0.0013793706893920898,
+            8.440576493740082e-06,
+            0.035696327686309814,
+            2.4414388462901115e-05
+          ],
+          "max_absolute_logprob_error": 0.10425269603729248,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": false,
+          "strict_pass": false,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "B129",
+          "run_id": "B",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0038299560546875,
+            0.0016064047813415527,
+            0.02913665771484375,
+            0.014624238014221191,
+            0.029170721769332886,
+            6.012525409460068e-05,
+            0.0008764863014221191,
+            0.0009970897808670998,
+            0.00012402236461639404,
+            0.0003606285899877548,
+            0.0007103979587554932,
+            0.00015541166067123413,
+            0.004000991582870483,
+            0.0024486184120178223,
+            0.0027159620076417923,
+            4.3721869587898254e-05
+          ],
+          "max_absolute_logprob_error": 0.029170721769332886,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "A17",
+          "run_id": "A-after",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0014213025569915771,
+            0.0008928030729293823,
+            0.001108124852180481,
+            0.02310776710510254,
+            0.10425269603729248,
+            0.002264188602566719,
+            0.03477299213409424,
+            1.0702991858124733e-05,
+            0.00200624018907547,
+            0.00019788183271884918,
+            0.009679257869720459,
+            0.011859685182571411,
+            0.0013793706893920898,
+            8.440576493740082e-06,
+            0.035696327686309814,
+            2.4414388462901115e-05
+          ],
+          "max_absolute_logprob_error": 0.10425269603729248,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": false,
+          "strict_pass": false,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "C513",
+          "run_id": "C513",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.04489642381668091,
+            0.028545260429382324,
+            0.026890099048614502,
+            0.002330377697944641,
+            3.328360617160797e-05,
+            0.00024196691811084747,
+            0.0006882143206894398,
+            0.0008501820266246796,
+            7.698312401771545e-06,
+            0.00010906299576163292,
+            7.51204788684845e-06,
+            0.00017321761697530746,
+            0.000820893794298172,
+            0.0007475786842405796,
+            1.1909287422895432e-07,
+            1.1909869499504566e-06
+          ],
+          "max_absolute_logprob_error": 0.04489642381668091,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        }
+      ],
+      "repeated_request_identical": true,
+      "tp1_maximum_sampled_allocated_bytes": 18875257344,
+      "tp1_physical_chips": [
+        2
+      ],
+      "workers": [
+        {
+          "rank": 0,
+          "pid": 1897419,
+          "logical_device": 0,
+          "physical_chip": 2,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 9645654528
+        },
+        {
+          "rank": 1,
+          "pid": 1897420,
+          "logical_device": 1,
+          "physical_chip": 3,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 9635261952
+        }
+      ],
+      "tp2_transformers_same_history": {
+        "strict_pass_at_0_10": true,
+        "requests": [
+          {
+            "case_id": "A17",
+            "run_id": "A-before",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.003572613000869751,
+              0.0019522160291671753,
+              0.024243950843811035,
+              0.0019289255142211914,
+              0.021961569786071777,
+              0.00036054104566574097,
+              0.05512571334838867,
+              9.050336666405201e-05,
+              0.0030131936073303223,
+              0.00024534203112125397,
+              0.009400732815265656,
+              0.009157121181488037,
+              0.01412278413772583,
+              0.00023279734887182713,
+              0.02567806839942932,
+              0.00020589027553796768
+            ],
+            "max_absolute_logprob_error": 0.05512571334838867,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "B129",
+            "run_id": "B",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.007461488246917725,
+              0.00111369788646698,
+              0.021117806434631348,
+              0.04778397083282471,
+              0.038107454776763916,
+              1.3282522559165955e-05,
+              0.015311449766159058,
+              0.0031719310209155083,
+              0.0016145184636116028,
+              0.00027506938204169273,
+              0.005177527666091919,
+              0.00174800306558609,
+              0.00019443780183792114,
+              0.016427695751190186,
+              0.002829175442457199,
+              5.241716280579567e-06
+            ],
+            "max_absolute_logprob_error": 0.04778397083282471,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "A17",
+            "run_id": "A-after",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.003572613000869751,
+              0.0019522160291671753,
+              0.024243950843811035,
+              0.0019289255142211914,
+              0.021961569786071777,
+              0.00036054104566574097,
+              0.05512571334838867,
+              9.050336666405201e-05,
+              0.0030131936073303223,
+              0.00024534203112125397,
+              0.009400732815265656,
+              0.009157121181488037,
+              0.01412278413772583,
+              0.00023279734887182713,
+              0.02567806839942932,
+              0.00020589027553796768
+            ],
+            "max_absolute_logprob_error": 0.05512571334838867,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "C513",
+            "run_id": "C513",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.044449567794799805,
+              0.03452441096305847,
+              0.0015373826026916504,
+              0.01582222431898117,
+              0.0005732197314500809,
+              0.0006794086657464504,
+              0.00043503474444150925,
+              0.0015116976574063301,
+              7.639406248927116e-05,
+              0.0005706385709345341,
+              0.000276392325758934,
+              0.0010842522606253624,
+              0.0050334930419921875,
+              0.0002844645641744137,
+              0.00012111215619370341,
+              0.0001741366577334702
+            ],
+            "max_absolute_logprob_error": 0.044449567794799805,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          }
+        ]
+      },
+      "tp1_transformers_same_history": {
+        "strict_pass_at_0_10": true,
+        "requests": [
+          {
+            "case_id": "A17",
+            "run_id": "A-before",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.004993915557861328,
+              0.001059412956237793,
+              0.025352075695991516,
+              0.021178841590881348,
+              0.0822911262512207,
+              0.00262472964823246,
+              0.020352721214294434,
+              0.00010120635852217674,
+              0.0010069534182548523,
+              0.00044322386384010315,
+              0.00027852505445480347,
+              0.002702564001083374,
+              0.01274341344833374,
+              0.0002412379253655672,
+              0.010018259286880493,
+              0.0002303046640008688
+            ],
+            "max_absolute_logprob_error": 0.0822911262512207,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "B129",
+            "run_id": "B",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.0036315321922302246,
+              0.0004927068948745728,
+              0.0502544641494751,
+              0.033159732818603516,
+              0.00893673300743103,
+              7.340777665376663e-05,
+              0.014434963464736938,
+              0.0021748412400484085,
+              0.0017385408282279968,
+              8.555920794606209e-05,
+              0.005887925624847412,
+              0.001592591404914856,
+              0.0038065537810325623,
+              0.013979077339172363,
+              0.0001132134348154068,
+              4.896358586847782e-05
+            ],
+            "max_absolute_logprob_error": 0.0502544641494751,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "A17",
+            "run_id": "A-after",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.004993915557861328,
+              0.001059412956237793,
+              0.025352075695991516,
+              0.021178841590881348,
+              0.0822911262512207,
+              0.00262472964823246,
+              0.020352721214294434,
+              0.00010120635852217674,
+              0.0010069534182548523,
+              0.00044322386384010315,
+              0.00027852505445480347,
+              0.002702564001083374,
+              0.01274341344833374,
+              0.0002412379253655672,
+              0.010018259286880493,
+              0.0002303046640008688
+            ],
+            "max_absolute_logprob_error": 0.0822911262512207,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          },
+          {
+            "case_id": "C513",
+            "run_id": "C513",
+            "reference_trajectory": "native_teacher_forced",
+            "native_output_tokens": 16,
+            "reference_output_tokens": 16,
+            "same_output_length": true,
+            "common_output_prefix_tokens": 16,
+            "first_output_mismatch_step": null,
+            "greedy_token_agreement_count": 16,
+            "full_greedy_token_agreement": true,
+            "comparable_logprob_count": 16,
+            "logprobs_complete_and_finite": true,
+            "absolute_logprob_errors": [
+              0.0004468560218811035,
+              0.0059791505336761475,
+              0.028427481651306152,
+              0.01349184662103653,
+              0.0006065033376216888,
+              0.0009213755838572979,
+              0.0002531795762479305,
+              0.0006615156307816505,
+              8.409237489104271e-05,
+              0.000679701566696167,
+              0.00026888027787208557,
+              0.0009110346436500549,
+              0.0042125992476940155,
+              0.0010320432484149933,
+              0.00012099306331947446,
+              0.00017532764468342066
+            ],
+            "max_absolute_logprob_error": 0.028427481651306152,
+            "logprob_atol": 0.1,
+            "all_native_steps_within_logprob_tolerance": true,
+            "strict_pass": true,
+            "greedy_disagreements": []
+          }
+        ]
+      }
+    },
+    {
+      "model": "Qwen3.5-27B",
+      "revision": "fc05daec18b0a78c049392ed2e771dde82bdf654",
+      "tp1_tp2_strict_pass_at_0_10": true,
+      "tp1_tp2_requests": [
+        {
+          "case_id": "A17",
+          "run_id": "A-before",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.005942821502685547,
+            0.0008861124515533447,
+            0.047246307134628296,
+            0.011336922645568848,
+            0.0004019737243652344,
+            0.00016782619059085846,
+            0.0010134577751159668,
+            5.923211574554443e-06,
+            0.01941850781440735,
+            0.0004957709461450577,
+            0.017912983894348145,
+            0.005093008279800415,
+            0.0007241442799568176,
+            1.6673002392053604e-06,
+            3.777630627155304e-05,
+            0.00014648796059191227
+          ],
+          "max_absolute_logprob_error": 0.047246307134628296,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "B129",
+          "run_id": "B",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.0007023215293884277,
+            0.000231817364692688,
+            0.03590834140777588,
+            0.001073993742465973,
+            3.213179297745228e-06,
+            0.0002339361235499382,
+            2.256385050714016e-05,
+            4.527857527136803e-05,
+            1.8343445844948292e-05,
+            8.097942918539047e-05,
+            1.0197050869464874e-05,
+            0.006632864475250244,
+            7.613794878125191e-06,
+            6.912538083270192e-06,
+            1.4891789760440588e-05,
+            2.1333704353310168e-05
+          ],
+          "max_absolute_logprob_error": 0.03590834140777588,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "A17",
+          "run_id": "A-after",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.005942821502685547,
+            0.0008861124515533447,
+            0.047246307134628296,
+            0.011336922645568848,
+            0.0004019737243652344,
+            0.00016782619059085846,
+            0.0010134577751159668,
+            5.923211574554443e-06,
+            0.01941850781440735,
+            0.0004957709461450577,
+            0.017912983894348145,
+            0.005093008279800415,
+            0.0007241442799568176,
+            1.6673002392053604e-06,
+            3.777630627155304e-05,
+            0.00014648796059191227
+          ],
+          "max_absolute_logprob_error": 0.047246307134628296,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        },
+        {
+          "case_id": "C513",
+          "run_id": "C513",
+          "reference_trajectory": "greedy",
+          "native_output_tokens": 16,
+          "reference_output_tokens": 16,
+          "same_output_length": true,
+          "common_output_prefix_tokens": 16,
+          "first_output_mismatch_step": null,
+          "greedy_token_agreement_count": 16,
+          "full_greedy_token_agreement": true,
+          "comparable_logprob_count": 16,
+          "logprobs_complete_and_finite": true,
+          "absolute_logprob_errors": [
+            0.004668954759836197,
+            0.0022320300340652466,
+            0.018540024757385254,
+            0.006596028804779053,
+            6.627710536122322e-05,
+            0.00014447409193962812,
+            0.0001346152275800705,
+            6.861286237835884e-05,
+            3.573950380086899e-07,
+            1.5133584383875132e-05,
+            5.3638359531760216e-05,
+            9.762670379132032e-05,
+            0.0003044791519641876,
+            2.144649624824524e-05,
+            4.824023926630616e-05,
+            2.216760185547173e-05
+          ],
+          "max_absolute_logprob_error": 0.018540024757385254,
+          "logprob_atol": 0.1,
+          "all_native_steps_within_logprob_tolerance": true,
+          "strict_pass": true,
+          "greedy_disagreements": []
+        }
+      ],
+      "repeated_request_identical": true,
+      "tp1_maximum_sampled_allocated_bytes": 54812499968,
+      "tp1_physical_chips": [
+        1
+      ],
+      "workers": [
+        {
+          "rank": 0,
+          "pid": 2149116,
+          "logical_device": 0,
+          "physical_chip": 2,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 27655723008
+        },
+        {
+          "rank": 1,
+          "pid": 2149119,
+          "logical_device": 1,
+          "physical_chip": 3,
+          "world_size": 2,
+          "attention_tp_size": 2,
+          "dense_tp_size": 2,
+          "lm_head_tp_size": 2,
+          "communication_backend": "HcclBackend",
+          "successful_forward_count": 65,
+          "successful_prefill_count": 5,
+          "successful_decode_count": 60,
+          "sampled_max_allocated_bytes": 27689571840
+        }
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 1,
+      "concurrency": 1,
+      "input_tokens": 128,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-128-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.16680603986606002,
+          "min": 0.16406592004932463,
+          "max": 0.1697891999501735,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.0769810847612837,
+          "min": 0.0748913003176096,
+          "max": 0.07753464571451621,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 5.013884020037949,
+          "min": 4.884969460079446,
+          "max": 5.05121326004155,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 12.764506146582104,
+          "min": 12.670134843065883,
+          "max": 13.101330254802319,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.19944540854034537,
+          "min": 0.19797085692290442,
+          "max": 0.20470828523128623,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.013903339859098,
+          "min": 4.885000130161643,
+          "max": 5.051248529925942,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 2083236352,
+          "maximum_sampled_reserved_bytes": 2342518784
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 1,
+      "concurrency": 1,
+      "input_tokens": 512,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-512-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.3949814399238676,
+          "min": 0.38947940012440085,
+          "max": 0.3957820900250226,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.07739511841449827,
+          "min": 0.07682244603093417,
+          "max": 0.07776564428774965,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 5.270882100099698,
+          "min": 5.2293041199445724,
+          "max": 5.289890530053526,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 12.142105856439889,
+          "min": 12.098504854236664,
+          "max": 12.238676762301434,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.18972040400687326,
+          "min": 0.18903913834744787,
+          "max": 0.1912293244109599,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.270914350170642,
+          "min": 5.229323499836028,
+          "max": 5.289909850107506,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 2110541312,
+          "maximum_sampled_reserved_bytes": 2468347904
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 1,
+      "concurrency": 4,
+      "input_tokens": 128,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-128-64",
+        "requests": 20,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.3973249749979004,
+          "min": 0.15470174001529813,
+          "max": 0.6377138800453395,
+          "count": 20
+        },
+        "observed_tpot_s": {
+          "median": 0.07473432381142167,
+          "min": 0.07207342920573576,
+          "max": 0.07908393635178014,
+          "count": 20
+        },
+        "request_duration_s": {
+          "median": 5.107561595039442,
+          "min": 5.029851760016754,
+          "max": 5.215412000194192,
+          "count": 20
+        },
+        "output_tokens_per_s": {
+          "median": 49.45690952302817,
+          "min": 49.08143142415283,
+          "max": 50.18708519923242,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.7727642112973152,
+          "min": 0.766897366002388,
+          "max": 0.7841732062380066,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.1762231499888,
+          "min": 5.100913890171796,
+          "max": 5.215821800054982,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 2093917696,
+          "maximum_sampled_reserved_bytes": 2365587456
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 1,
+      "concurrency": 4,
+      "input_tokens": 512,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-512-64",
+        "requests": 20,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.9629169299732894,
+          "min": 0.3838940199930221,
+          "max": 1.616624359972775,
+          "count": 20
+        },
+        "observed_tpot_s": {
+          "median": 0.08155500682418249,
+          "min": 0.07230443524063698,
+          "max": 0.09088978523920689,
+          "count": 20
+        },
+        "request_duration_s": {
+          "median": 6.109461185056716,
+          "min": 6.090777250006795,
+          "max": 6.1859746898990124,
+          "count": 20
+        },
+        "output_tokens_per_s": {
+          "median": 41.475397847076195,
+          "min": 41.38170005028064,
+          "max": 41.5369095253895,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.6480530913605655,
+          "min": 0.646589063285635,
+          "max": 0.6490142113342109,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 6.17233380000107,
+          "min": 6.163193240063265,
+          "max": 6.186309399781749,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 2112388096,
+          "maximum_sampled_reserved_bytes": 2489319424
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 2,
+      "concurrency": 1,
+      "input_tokens": 128,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-128-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.14167835004627705,
+          "min": 0.13773793983273208,
+          "max": 0.15739972004666924,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.07969578666730769,
+          "min": 0.07939121111236985,
+          "max": 0.0829779587294315,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 5.167872480116785,
+          "min": 5.139396289829165,
+          "max": 5.385025559924543,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 12.384104950330487,
+          "min": 11.884767772834579,
+          "max": 12.452747175338756,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.19350163984891386,
+          "min": 0.1856994964505403,
+          "max": 0.19457417461466806,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.1679148599505424,
+          "min": 5.139428199967369,
+          "max": 5.385044219903648,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 1230346240,
+          "maximum_sampled_reserved_bytes": 1361051648
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 1220280832,
+          "maximum_sampled_reserved_bytes": 1361051648
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 2,
+      "concurrency": 1,
+      "input_tokens": 512,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-512-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.27619159989990294,
+          "min": 0.27331776986829937,
+          "max": 0.2771589900366962,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.07905583650923319,
+          "min": 0.07806257412783683,
+          "max": 0.08015575968024749,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 5.256809529848397,
+          "min": 5.194821330020204,
+          "max": 5.326991220004857,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 12.174636038376592,
+          "min": 12.014253883329896,
+          "max": 12.319925780551875,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.19022868809963425,
+          "min": 0.18772271692702963,
+          "max": 0.19249884032112305,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.2568306599278,
+          "min": 5.194836490089074,
+          "max": 5.327005790080875,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 1229280768,
+          "maximum_sampled_reserved_bytes": 1484783616
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 1245598208,
+          "maximum_sampled_reserved_bytes": 1484783616
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 2,
+      "concurrency": 4,
+      "input_tokens": 128,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-128-64",
+        "requests": 20,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.250135840033181,
+          "min": 0.20285483007319272,
+          "max": 0.5726304200943559,
+          "count": 20
+        },
+        "observed_tpot_s": {
+          "median": 0.08417790515777018,
+          "min": 0.08121430396752817,
+          "max": 0.08712208460247706,
+          "count": 20
+        },
+        "request_duration_s": {
+          "median": 5.609420320019126,
+          "min": 5.49701016000472,
+          "max": 5.833368269959465,
+          "count": 20
+        },
+        "output_tokens_per_s": {
+          "median": 45.042026629951216,
+          "min": 43.88396966123857,
+          "max": 45.87281873427597,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.7037816660929878,
+          "min": 0.6856870259568526,
+          "max": 0.716762792723062,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 5.683580850018188,
+          "min": 5.580646820133552,
+          "max": 5.833565239794552,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 1233168384,
+          "maximum_sampled_reserved_bytes": 1382023168
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 1233168896,
+          "maximum_sampled_reserved_bytes": 1382023168
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-0.8B",
+      "tp_size": 2,
+      "concurrency": 4,
+      "input_tokens": 512,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-512-64",
+        "requests": 20,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.6901579350233078,
+          "min": 0.2735667498782277,
+          "max": 1.195759390015155,
+          "count": 20
+        },
+        "observed_tpot_s": {
+          "median": 0.08855338023775922,
+          "min": 0.08082296825679285,
+          "max": 0.09608677000043885,
+          "count": 20
+        },
+        "request_duration_s": {
+          "median": 6.29314029996749,
+          "min": 6.210396409966052,
+          "max": 6.406122870044783,
+          "count": 20
+        },
+        "output_tokens_per_s": {
+          "median": 40.23857381226794,
+          "min": 39.960548697907434,
+          "max": 40.729001590648096,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.6287277158166865,
+          "min": 0.6243835734048037,
+          "max": 0.6363906498538765,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 6.362054510042071,
+          "min": 6.285447469912469,
+          "max": 6.406318440102041,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 1237879808,
+          "maximum_sampled_reserved_bytes": 1505755136
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 1239193600,
+          "maximum_sampled_reserved_bytes": 1505755136
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-27B",
+      "tp_size": 2,
+      "concurrency": 1,
+      "input_tokens": 128,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-128-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 0.5185572400223464,
+          "min": 0.5165612201672047,
+          "max": 0.5229715001769364,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.19769329095022783,
+          "min": 0.1966105325384036,
+          "max": 0.19825487428655228,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 12.971248880028725,
+          "min": 12.909444980090484,
+          "max": 13.008624270092696,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 4.9339796480077505,
+          "min": 4.919804658762537,
+          "max": 4.9576030435358085,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.0770934320001211,
+          "min": 0.07687194779316464,
+          "max": 0.07746254755524701,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 12.97127360990271,
+          "min": 12.90946440002881,
+          "max": 13.008646570146084,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 27631407616,
+          "maximum_sampled_reserved_bytes": 28164751360
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 27630620672,
+          "maximum_sampled_reserved_bytes": 28164751360
+        }
+      ]
+    },
+    {
+      "model": "Qwen3.5-27B",
+      "tp_size": 2,
+      "concurrency": 1,
+      "input_tokens": 512,
+      "output_tokens_per_request": 64,
+      "warmup_groups": 2,
+      "measurement_groups": 5,
+      "summary": {
+        "case_id": "bench-512-64",
+        "requests": 5,
+        "groups": 5,
+        "observed_ttft_s": {
+          "median": 1.4017072001006454,
+          "min": 1.3961949299555272,
+          "max": 1.40368856000714,
+          "count": 5
+        },
+        "observed_tpot_s": {
+          "median": 0.19722241984074196,
+          "min": 0.1968016950783157,
+          "max": 0.19971931349146105,
+          "count": 5
+        },
+        "request_duration_s": {
+          "median": 13.821218499913812,
+          "min": 13.8006320099812,
+          "max": 13.982592130079865,
+          "count": 5
+        },
+        "output_tokens_per_s": {
+          "median": 4.6305543202415,
+          "min": 4.577114472263226,
+          "max": 4.6374633801313125,
+          "count": 5
+        },
+        "requests_per_s": {
+          "median": 0.07235241125377344,
+          "min": 0.0715174136291129,
+          "max": 0.07246036531455176,
+          "count": 5
+        },
+        "makespan_s": {
+          "median": 13.82123944000341,
+          "min": 13.80064805992879,
+          "max": 13.982608560007066,
+          "count": 5
+        }
+      },
+      "memory": [
+        {
+          "rank": 0,
+          "maximum_sampled_allocated_bytes": 27682757120,
+          "maximum_sampled_reserved_bytes": 28313649152
+        },
+        {
+          "rank": 1,
+          "maximum_sampled_allocated_bytes": 27684597760,
+          "maximum_sampled_reserved_bytes": 28313649152
+        }
+      ]
+    }
+  ],
+  "targeted_tests": {
+    "passed": 220,
+    "skipped": 1,
+    "skip_reason": "CUDA required",
+    "scope": "Logits, HCCL backend, Ascend GDN and HW2 experiment scripts"
+  },
+  "measurement_scope": {
+    "latency": "Host streaming, including scheduler, IPC and delivery; profiler disabled",
+    "throughput": "Total completed output tokens divided by concurrent-group makespan",
+    "memory": "Per-rank PyTorch allocator samples every 200ms; not an exact continuous HBM peak",
+    "shared_server": true
+  },
+  "communication": {
+    "schema_version": 1,
+    "model": "Qwen3.5-0.8B",
+    "tp_size": 2,
+    "input_tokens_per_request": 512,
+    "output_tokens_per_request": 16,
+    "summary_source": "examples/aics_qwen35_tp2/profile_summary.py",
+    "summary_source_sha256": "604ec5f4ac06f80d8093a4b98afcc7b9b4460a614c3ef1925a147b0631493ba7",
+    "classification_evidence": "profile-classification-evidence.json",
+    "measurement": "Per-rank Chrome device intervals in microseconds; neither rank sums nor rank maxima are request end-to-end latency.",
+    "communication_scope": "Union of CANN collective envelopes and verified physical HCCL component tasks; envelope-only timing is retained separately.",
+    "wait_scope": "Union of matched physical HCCL EVENT_WAIT/NOTIFY_WAIT tasks. Wait overlaps communication and computation; it is not an exclusive phase or a quantity to add to end-to-end time.",
+    "profiling_scope": "Level1, overlap schedule off, child-profiler disable synchronizes NPU after every forward; CPU profiling perturbs dispatch. Independent unprofiled benchmark measures throughput and latency.",
+    "standard_communication_time_analysis": "No communication.json or communication_time_analysis report was generated; no exclusive Transit Time/Wait Time decomposition is claimed.",
+    "ranks": [
+      {
+        "concurrency": 1,
+        "rank": 0,
+        "summary_file": "artifacts/profile-0.8B-tp2-c1.traces-fbbcccdd/calibrated-summary-TP0.json",
+        "input_trace": "artifacts/profile-0.8B-tp2-c1.traces-fbbcccdd/aics-tp-profile-TP0.trace.compact.json",
+        "input_sha256": "d4348b93ad16577217be4646731d1b4eab05da1d6acf771007370d51bc4c08db",
+        "metrics": {
+          "window_start_relative_us": 0.0,
+          "window_end_relative_us": 4174122.659,
+          "window_duration_us": 4174122.659,
+          "compute_union_us": 372187.6804997975,
+          "communication_union_us": 2033562.215000014,
+          "collective_envelope_union_us": 1999231.2350000038,
+          "compute_communication_overlap_us": 13029.823749904484,
+          "compute_without_communication_us": 359157.85674989305,
+          "exposed_communication_us": 2020532.3912501095,
+          "transfer_union_us": 1709.5760000845003,
+          "communication_component_union_us": 2005918.8592500237,
+          "communication_wait_union_us": 1978401.0684999996,
+          "wait_union_us": 1990820.0315000217,
+          "unknown_union_us": 0.040000000018626455,
+          "aicpu_union_us": 299874.7115000019,
+          "aicpu_compute_union_us": 149243.86349999925,
+          "aicpu_communication_component_union_us": 150630.84800000268,
+          "sdma_or_dma_union_us": 5987.0642502012415,
+          "device_activity_union_us": 2406440.201749992,
+          "idle_us": 1767682.457250008,
+          "exposed_communication_fraction": 0.4840615756447778,
+          "event_counts": {
+            "communication": 816,
+            "unknown": 3,
+            "wait": 7451,
+            "compute": 51608,
+            "communication_component": 39456,
+            "transfer": 2277
+          }
+        },
+        "stages": {
+          "decode": {
+            "window_start_relative_us": 334550.565,
+            "window_end_relative_us": 4165376.585,
+            "window_duration_us": 3830826.02,
+            "compute_union_us": 161313.058499797,
+            "communication_union_us": 2003054.7862500092,
+            "collective_envelope_union_us": 1983069.6760000037,
+            "compute_communication_overlap_us": 835.0577500000945,
+            "compute_without_communication_us": 160478.00074979692,
+            "exposed_communication_us": 2002219.728500009,
+            "transfer_union_us": 1271.6270000841469,
+            "communication_component_union_us": 138493.92625000258,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 1948387.2592500034,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 157640.86950000172,
+            "aicpu_compute_union_us": 19146.943249999138,
+            "aicpu_communication_component_union_us": 138493.92625000258,
+            "sdma_or_dma_union_us": 1271.6270000841469,
+            "device_activity_union_us": 2176966.987999991,
+            "idle_us": 1653859.032000009,
+            "exposed_communication_fraction": 0.5226600524395543,
+            "event_counts": {
+              "communication": 765,
+              "wait": 3885,
+              "compute": 40485,
+              "communication_component": 765,
+              "transfer": 1785
+            },
+            "collective_operation_counts": {
+              "broadcast": 15,
+              "all_gather": 15,
+              "all_reduce": 735
+            },
+            "communication_overlap_all_compute_us": 835.0577500000945,
+            "exposed_communication_against_all_compute_us": 2002219.728500009,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "prefill": {
+            "window_start_relative_us": 25102.362,
+            "window_end_relative_us": 331659.487,
+            "window_duration_us": 306557.125,
+            "compute_union_us": 210660.13825000048,
+            "communication_union_us": 19074.838750000243,
+            "collective_envelope_union_us": 16161.558999999957,
+            "compute_communication_overlap_us": 1723.2947500002265,
+            "compute_without_communication_us": 208936.84350000025,
+            "exposed_communication_us": 17351.544000000016,
+            "transfer_union_us": 435.189000000355,
+            "communication_component_union_us": 12136.921750000085,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 12923.736999999739,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 142233.8420000002,
+            "aicpu_compute_union_us": 130096.92025000011,
+            "aicpu_communication_component_union_us": 12136.921750000085,
+            "sdma_or_dma_union_us": 435.189000000355,
+            "device_activity_union_us": 229139.1667500006,
+            "idle_us": 77417.95824999941,
+            "exposed_communication_fraction": 0.05660133979922997,
+            "event_counts": {
+              "communication": 51,
+              "wait": 266,
+              "compute": 11120,
+              "communication_component": 51,
+              "transfer": 491
+            },
+            "collective_operation_counts": {
+              "all_reduce": 49,
+              "all_gather": 1,
+              "broadcast": 1
+            },
+            "communication_overlap_all_compute_us": 1723.2947500002265,
+            "exposed_communication_against_all_compute_us": 17351.544000000016,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "unattributed": {
+            "window_start_relative_us": 0.0,
+            "window_end_relative_us": 4174122.659,
+            "window_duration_us": 4174122.659,
+            "compute_union_us": 214.48374999999942,
+            "communication_union_us": 1978460.1290000197,
+            "collective_envelope_union_us": 0,
+            "compute_communication_overlap_us": 0.0,
+            "compute_without_communication_us": 214.48374999999942,
+            "exposed_communication_us": 1978460.1290000197,
+            "transfer_union_us": 2.7599999999983993,
+            "communication_component_union_us": 1978460.1290000197,
+            "communication_wait_union_us": 1978401.0684999996,
+            "wait_union_us": 39394.787500031896,
+            "unknown_union_us": 0.040000000018626455,
+            "aicpu_union_us": 0,
+            "aicpu_compute_union_us": 0,
+            "aicpu_communication_component_union_us": 0,
+            "sdma_or_dma_union_us": 4280.24825011674,
+            "device_activity_union_us": 1990621.2075000303,
+            "idle_us": 2183501.4514999697,
+            "exposed_communication_fraction": 0.4739822690006915,
+            "event_counts": {
+              "unknown": 3,
+              "wait": 3300,
+              "compute": 3,
+              "communication_component": 38640,
+              "transfer": 1
+            },
+            "collective_operation_counts": {},
+            "communication_overlap_all_compute_us": 10505.431499904109,
+            "exposed_communication_against_all_compute_us": 1967954.6975001157,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          }
+        },
+        "collective_operation_counts": {
+          "broadcast": 16,
+          "all_gather": 16,
+          "all_reduce": 784
+        },
+        "collective_calls_per_generated_token": 51.0,
+        "actual_output_tokens": 16,
+        "backend_recording": {
+          "calls": {
+            "all_reduce": 784,
+            "all_gather_single": 16
+          },
+          "logical_payload_bytes": 56858624,
+          "forward_count": 16,
+          "forward_batch_size_counts": {
+            "1": 16
+          },
+          "scope": "Recorded HcclBackend calls; excludes the direct sampling token broadcast. Payload is logical input, not wire bytes."
+        },
+        "communication_wait_evidence": {
+          "communication_wait_detail_event_count": 16112,
+          "communication_wait_detail_unique_task_count": 16112,
+          "duplicate_detail_task_key_count": 0,
+          "matched_physical_wait_event_count": 16112,
+          "matched_unique_task_count": 16112,
+          "unmatched_detail_unique_task_count": 0,
+          "matched_unique_task_fraction": 1.0,
+          "detail_nonzero_host_duration_estimate_count": 816,
+          "detail_host_duration_estimate_value_counts": {
+            "0.02": 816,
+            "0.0": 15296
+          },
+          "host_duration_estimate_used_for_timing": false,
+          "physical_duration_le_0_02us_count": 7255,
+          "physical_duration_le_0_02us_union_us": 128.9400000108655,
+          "physical_duration_gt_0_02us_count": 8857,
+          "physical_duration_gt_0_02us_union_us": 1978401.0684999968,
+          "matched_physical_wait_union_us": 1978401.0684999968,
+          "source": "CANN get_hccl_task_data joins host a.duration AS duration_estimated to AscendTask b.duration AS duration. Timing uses matched hardware Chrome X-event dur; the host estimate is retained only as metadata."
+        },
+        "flow_attribution": {
+          "finish_count": 59678,
+          "ambiguous_source_count": 0,
+          "linked_device_event_count": 59678,
+          "linked_collective_envelope_count": 816,
+          "unattributed_compute_event_count": 3,
+          "unattributed_compute_union_us": 214.48374999999942,
+          "unattributed_device_event_count": 41947
+        },
+        "unknown_tasks": [
+          {
+            "name": "PLACE_HOLDER_SQE",
+            "task_type": "PLACE_HOLDER_SQE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.02000000001862645,
+            "duration_union_us": 0.02000000001862645
+          },
+          {
+            "name": "PROFILING_ENABLE",
+            "task_type": "PROFILING_ENABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.02,
+            "duration_union_us": 0.02
+          },
+          {
+            "name": "PROFILING_DISABLE",
+            "task_type": "PROFILING_DISABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.0,
+            "duration_union_us": 0
+          }
+        ],
+        "cann_statistic_check": {
+          "passed": true,
+          "source": "aics-tp0-1870985_1870985_20261023144346923_ascend_pt/PROF_000001_20261023144346936_01870985FQKGDELE/mindstudio_profiler_output/communication_statistic_20261023144408.csv",
+          "source_sha256": "4ad302e22328ee65aaccb7c6b3d49a25c060ac99643fc3606aeae430c61c7aa0",
+          "rows": [
+            {
+              "operation": "all_reduce",
+              "count": 784,
+              "trace_duration_sum_us": 1964884.105000002,
+              "cann_csv_duration_sum_us": 1964884.12,
+              "difference_us": 0.014999998034909368
+            },
+            {
+              "operation": "broadcast",
+              "count": 16,
+              "trace_duration_sum_us": 22984.381000000343,
+              "cann_csv_duration_sum_us": 22984.38,
+              "difference_us": 0.0010000003421737347
+            },
+            {
+              "operation": "all_gather",
+              "count": 16,
+              "trace_duration_sum_us": 11362.749000000185,
+              "cann_csv_duration_sum_us": 11362.747,
+              "difference_us": 0.002000000185944373
+            }
+          ]
+        }
+      },
+      {
+        "concurrency": 1,
+        "rank": 1,
+        "summary_file": "artifacts/profile-0.8B-tp2-c1.traces-fbbcccdd/calibrated-summary-TP1.json",
+        "input_trace": "artifacts/profile-0.8B-tp2-c1.traces-fbbcccdd/aics-tp-profile-TP1.trace.compact.json",
+        "input_sha256": "b52ec500a3bb30bf7ce93e60b9e649e3651964933cb2f1138b6608b71773bf0b",
+        "metrics": {
+          "window_start_relative_us": 0.0,
+          "window_end_relative_us": 4193574.82,
+          "window_duration_us": 4193574.82,
+          "compute_union_us": 372352.6599996787,
+          "communication_union_us": 602728.4200000025,
+          "collective_envelope_union_us": 566092.5199999964,
+          "compute_communication_overlap_us": 12168.939999987902,
+          "compute_without_communication_us": 360183.71999969083,
+          "exposed_communication_us": 590559.4800000145,
+          "transfer_union_us": 1678.7000000843618,
+          "communication_component_union_us": 573447.7200000357,
+          "communication_wait_union_us": 543737.9399999973,
+          "wait_union_us": 550402.6600000251,
+          "unknown_union_us": 0.02,
+          "aicpu_union_us": 304285.479999998,
+          "aicpu_compute_union_us": 151561.019999999,
+          "aicpu_communication_component_union_us": 152768.23999999903,
+          "sdma_or_dma_union_us": 5997.600000166913,
+          "device_activity_union_us": 968539.0199997837,
+          "idle_us": 3225035.800000216,
+          "exposed_communication_fraction": 0.14082483450241973,
+          "event_counts": {
+            "communication": 816,
+            "unknown": 3,
+            "wait": 7451,
+            "compute": 51608,
+            "communication_component": 39376,
+            "transfer": 2277
+          }
+        },
+        "stages": {
+          "decode": {
+            "window_start_relative_us": 330457.62,
+            "window_end_relative_us": 4160921.0,
+            "window_duration_us": 3830463.38,
+            "compute_union_us": 160541.97999967856,
+            "communication_union_us": 563381.9799999974,
+            "collective_envelope_union_us": 539417.0199999964,
+            "compute_communication_overlap_us": 839.6399999979185,
+            "compute_without_communication_us": 159702.33999968064,
+            "exposed_communication_us": 562542.3399999995,
+            "transfer_union_us": 1242.0200000840123,
+            "communication_component_union_us": 140036.01999999903,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 491697.7400000097,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 160301.03999999806,
+            "aicpu_compute_union_us": 20308.799999999057,
+            "aicpu_communication_component_union_us": 140036.01999999903,
+            "sdma_or_dma_union_us": 1242.0200000840123,
+            "device_activity_union_us": 728800.2399997832,
+            "idle_us": 3101663.1400002167,
+            "exposed_communication_fraction": 0.14686012740317583,
+            "event_counts": {
+              "communication": 765,
+              "wait": 3885,
+              "compute": 40485,
+              "communication_component": 765,
+              "transfer": 1785
+            },
+            "collective_operation_counts": {
+              "all_gather": 15,
+              "all_reduce": 735,
+              "broadcast": 15
+            },
+            "communication_overlap_all_compute_us": 839.6399999979185,
+            "exposed_communication_against_all_compute_us": 562542.3399999995,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "prefill": {
+            "window_start_relative_us": 22070.96,
+            "window_end_relative_us": 328241.02,
+            "window_duration_us": 306170.06,
+            "compute_union_us": 211579.16000000015,
+            "communication_union_us": 29195.75999999978,
+            "collective_envelope_union_us": 26675.499999999964,
+            "compute_communication_overlap_us": 1955.5199999998804,
+            "compute_without_communication_us": 209623.64000000028,
+            "exposed_communication_us": 27240.2399999999,
+            "transfer_union_us": 434.0400000003501,
+            "communication_component_union_us": 12732.220000000001,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 24470.799999999974,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 143984.43999999994,
+            "aicpu_compute_union_us": 131252.21999999994,
+            "aicpu_communication_component_union_us": 12732.220000000001,
+            "sdma_or_dma_union_us": 434.0400000003501,
+            "device_activity_union_us": 239502.30000000037,
+            "idle_us": 66667.75999999963,
+            "exposed_communication_fraction": 0.0889709464080188,
+            "event_counts": {
+              "communication": 51,
+              "wait": 266,
+              "compute": 11120,
+              "communication_component": 51,
+              "transfer": 491
+            },
+            "collective_operation_counts": {
+              "all_reduce": 49,
+              "broadcast": 1,
+              "all_gather": 1
+            },
+            "communication_overlap_all_compute_us": 1955.5199999998804,
+            "exposed_communication_against_all_compute_us": 27240.2399999999,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "unattributed": {
+            "window_start_relative_us": 0.0,
+            "window_end_relative_us": 4193574.82,
+            "window_duration_us": 4193574.82,
+            "compute_union_us": 231.52000000000044,
+            "communication_union_us": 543799.800000035,
+            "collective_envelope_union_us": 0,
+            "compute_communication_overlap_us": 0.0,
+            "compute_without_communication_us": 231.52000000000044,
+            "exposed_communication_us": 543799.800000035,
+            "transfer_union_us": 2.639999999999418,
+            "communication_component_union_us": 543799.800000035,
+            "communication_wait_union_us": 543737.9399999973,
+            "wait_union_us": 42862.32000001523,
+            "unknown_union_us": 0.02,
+            "aicpu_union_us": 0,
+            "aicpu_compute_union_us": 0,
+            "aicpu_communication_component_union_us": 0,
+            "sdma_or_dma_union_us": 4321.54000008255,
+            "device_activity_union_us": 558112.5400000549,
+            "idle_us": 3635462.279999945,
+            "exposed_communication_fraction": 0.12967451955466364,
+            "event_counts": {
+              "unknown": 3,
+              "wait": 3300,
+              "compute": 3,
+              "communication_component": 38560,
+              "transfer": 1
+            },
+            "collective_operation_counts": {},
+            "communication_overlap_all_compute_us": 10563.459999988729,
+            "exposed_communication_against_all_compute_us": 533236.3400000462,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          }
+        },
+        "collective_operation_counts": {
+          "all_gather": 16,
+          "all_reduce": 784,
+          "broadcast": 16
+        },
+        "collective_calls_per_generated_token": 51.0,
+        "actual_output_tokens": 16,
+        "backend_recording": {
+          "calls": {
+            "all_reduce": 784,
+            "all_gather_single": 16
+          },
+          "logical_payload_bytes": 56858624,
+          "forward_count": 16,
+          "forward_batch_size_counts": {
+            "1": 16
+          },
+          "scope": "Recorded HcclBackend calls; excludes the direct sampling token broadcast. Payload is logical input, not wire bytes."
+        },
+        "communication_wait_evidence": {
+          "communication_wait_detail_event_count": 16080,
+          "communication_wait_detail_unique_task_count": 16080,
+          "duplicate_detail_task_key_count": 0,
+          "matched_physical_wait_event_count": 16080,
+          "matched_unique_task_count": 16080,
+          "unmatched_detail_unique_task_count": 0,
+          "matched_unique_task_fraction": 1.0,
+          "detail_nonzero_host_duration_estimate_count": 816,
+          "detail_host_duration_estimate_value_counts": {
+            "0.02": 816,
+            "0.0": 15264
+          },
+          "host_duration_estimate_used_for_timing": false,
+          "physical_duration_le_0_02us_count": 7409,
+          "physical_duration_le_0_02us_union_us": 127.29999999401946,
+          "physical_duration_gt_0_02us_count": 8671,
+          "physical_duration_gt_0_02us_union_us": 543737.9400000044,
+          "matched_physical_wait_union_us": 543737.9400000044,
+          "source": "CANN get_hccl_task_data joins host a.duration AS duration_estimated to AscendTask b.duration AS duration. Timing uses matched hardware Chrome X-event dur; the host estimate is retained only as metadata."
+        },
+        "flow_attribution": {
+          "finish_count": 59680,
+          "ambiguous_source_count": 0,
+          "linked_device_event_count": 59680,
+          "linked_collective_envelope_count": 816,
+          "unattributed_compute_event_count": 3,
+          "unattributed_compute_union_us": 231.52000000000044,
+          "unattributed_device_event_count": 41867
+        },
+        "unknown_tasks": [
+          {
+            "name": "PROFILING_ENABLE",
+            "task_type": "PROFILING_ENABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.02,
+            "duration_union_us": 0.02
+          },
+          {
+            "name": "PLACE_HOLDER_SQE",
+            "task_type": "PLACE_HOLDER_SQE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.0,
+            "duration_union_us": 0
+          },
+          {
+            "name": "PROFILING_DISABLE",
+            "task_type": "PROFILING_DISABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.0,
+            "duration_union_us": 0
+          }
+        ],
+        "cann_statistic_check": {
+          "passed": true,
+          "source": "aics-tp1-1870986_1870986_20261023144346924_ascend_pt/PROF_000001_20261023144346936_01870986GQIRJJDO/mindstudio_profiler_output/communication_statistic_20261023144408.csv",
+          "source_sha256": "f39056c5fbf135787d2c79eda8cb3cd443351013c9e2c3f95b235df1557789b6",
+          "rows": [
+            {
+              "operation": "all_reduce",
+              "count": 784,
+              "trace_duration_sum_us": 548459.9999999967,
+              "cann_csv_duration_sum_us": 548460.0,
+              "difference_us": 3.259629011154175e-09
+            },
+            {
+              "operation": "broadcast",
+              "count": 16,
+              "trace_duration_sum_us": 11252.219999999623,
+              "cann_csv_duration_sum_us": 11252.22,
+              "difference_us": 3.765308065339923e-10
+            },
+            {
+              "operation": "all_gather",
+              "count": 16,
+              "trace_duration_sum_us": 6380.300000000047,
+              "cann_csv_duration_sum_us": 6380.3,
+              "difference_us": 4.638422979041934e-11
+            }
+          ]
+        }
+      },
+      {
+        "concurrency": 4,
+        "rank": 0,
+        "summary_file": "artifacts/profile-0.8B-tp2-c4.traces-6450f9dd/calibrated-summary-TP0.json",
+        "input_trace": "artifacts/profile-0.8B-tp2-c4.traces-6450f9dd/aics-tp-profile-TP0.trace.compact.json.gz",
+        "input_sha256": "433b9baa387dd3fbd41c25e200cbe17172eae0e848dff7d5d019f34b12ecd9a5",
+        "metrics": {
+          "window_start_relative_us": 0.0,
+          "window_end_relative_us": 8689352.234,
+          "window_duration_us": 8689352.234,
+          "compute_union_us": 1087655.0777501764,
+          "communication_union_us": 251387.97025002018,
+          "collective_envelope_union_us": 188879.27300000022,
+          "compute_communication_overlap_us": 4300.323750001255,
+          "compute_without_communication_us": 1083354.7540001753,
+          "exposed_communication_us": 247087.64650001892,
+          "transfer_union_us": 3111.829000025047,
+          "communication_component_union_us": 204103.2874999089,
+          "communication_wait_union_us": 134744.3335000051,
+          "wait_union_us": 131563.75074961304,
+          "unknown_union_us": 0.03999999955296517,
+          "aicpu_union_us": 742787.9855000029,
+          "aicpu_compute_union_us": 543159.4932500003,
+          "aicpu_communication_component_union_us": 199628.49225000263,
+          "sdma_or_dma_union_us": 9918.396750033144,
+          "device_activity_union_us": 1340573.4879999042,
+          "idle_us": 7348778.746000095,
+          "exposed_communication_fraction": 0.028435680801752492,
+          "event_counts": {
+            "communication": 1020,
+            "unknown": 3,
+            "wait": 9344,
+            "compute": 90649,
+            "communication_component": 49321,
+            "transfer": 3857
+          }
+        },
+        "stages": {
+          "decode": {
+            "window_start_relative_us": 1209379.024,
+            "window_end_relative_us": 8624320.493999999,
+            "window_duration_us": 7414941.469999999,
+            "compute_union_us": 239309.41000016173,
+            "communication_union_us": 195356.1460000202,
+            "collective_envelope_union_us": 147640.3430000001,
+            "compute_communication_overlap_us": 176.40450000134297,
+            "compute_without_communication_us": 239133.0055001604,
+            "exposed_communication_us": 195179.74150001886,
+            "transfer_union_us": 1368.7114999915939,
+            "communication_component_union_us": 153260.8040000021,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 62489.96899967338,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 175904.49625000078,
+            "aicpu_compute_union_us": 22643.692249998683,
+            "aicpu_communication_component_union_us": 153260.8040000021,
+            "sdma_or_dma_union_us": 1368.7114999915939,
+            "device_activity_union_us": 437892.1642498553,
+            "idle_us": 6977049.305750144,
+            "exposed_communication_fraction": 0.026322492536143903,
+            "event_counts": {
+              "communication": 816,
+              "wait": 4144,
+              "compute": 46145,
+              "communication_component": 816,
+              "transfer": 1889
+            },
+            "collective_operation_counts": {
+              "all_reduce": 784,
+              "broadcast": 16,
+              "all_gather": 16
+            },
+            "communication_overlap_all_compute_us": 176.40450000134297,
+            "exposed_communication_against_all_compute_us": 195179.74150001886,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "prefill": {
+            "window_start_relative_us": 16739.975,
+            "window_end_relative_us": 2049127.462,
+            "window_duration_us": 2032387.487,
+            "compute_union_us": 847506.3712500148,
+            "communication_union_us": 56031.824249999976,
+            "collective_envelope_union_us": 41238.930000000124,
+            "compute_communication_overlap_us": 4123.919249999912,
+            "compute_without_communication_us": 843382.4520000148,
+            "exposed_communication_us": 51907.905000000064,
+            "transfer_union_us": 1731.7370000334959,
+            "communication_component_union_us": 46367.68825000054,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 21425.270000003755,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 566883.4892500021,
+            "aicpu_compute_union_us": 520515.8010000016,
+            "aicpu_communication_component_union_us": 46367.68825000054,
+            "sdma_or_dma_union_us": 1731.7370000334959,
+            "device_activity_union_us": 901829.9065000525,
+            "idle_us": 1130557.5804999475,
+            "exposed_communication_fraction": 0.02554035848578321,
+            "event_counts": {
+              "communication": 204,
+              "wait": 1064,
+              "compute": 44492,
+              "communication_component": 204,
+              "transfer": 1964
+            },
+            "collective_operation_counts": {
+              "broadcast": 4,
+              "all_reduce": 196,
+              "all_gather": 4
+            },
+            "communication_overlap_all_compute_us": 4123.919249999912,
+            "exposed_communication_against_all_compute_us": 51907.905000000064,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "unattributed": {
+            "window_start_relative_us": 0.0,
+            "window_end_relative_us": 8689352.234,
+            "window_duration_us": 8689352.234,
+            "compute_union_us": 839.2965000000058,
+            "communication_union_us": 134842.53474991806,
+            "collective_envelope_union_us": 0,
+            "compute_communication_overlap_us": 0.0,
+            "compute_without_communication_us": 839.2965000000058,
+            "exposed_communication_us": 134842.53474991806,
+            "transfer_union_us": 11.380499999957465,
+            "communication_component_union_us": 134842.53474991806,
+            "communication_wait_union_us": 134744.3335000051,
+            "wait_union_us": 49529.90749993006,
+            "unknown_union_us": 0.03999999955296517,
+            "aicpu_union_us": 0,
+            "aicpu_compute_union_us": 0,
+            "aicpu_communication_component_union_us": 0,
+            "sdma_or_dma_union_us": 6817.948250008054,
+            "device_activity_union_us": 152872.69024988732,
+            "idle_us": 8536479.543750111,
+            "exposed_communication_fraction": 0.01551813427729417,
+            "event_counts": {
+              "unknown": 3,
+              "wait": 4136,
+              "compute": 12,
+              "communication_component": 48301,
+              "transfer": 4
+            },
+            "collective_operation_counts": {},
+            "communication_overlap_all_compute_us": 0.0,
+            "exposed_communication_against_all_compute_us": 134842.53474991806,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          }
+        },
+        "collective_operation_counts": {
+          "all_reduce": 980,
+          "broadcast": 20,
+          "all_gather": 20
+        },
+        "collective_calls_per_generated_token": 15.9375,
+        "actual_output_tokens": 64,
+        "backend_recording": {
+          "calls": {
+            "all_reduce": 980,
+            "all_gather_single": 20
+          },
+          "logical_payload_bytes": 227434496,
+          "forward_count": 20,
+          "forward_batch_size_counts": {
+            "1": 5,
+            "3": 1,
+            "4": 14
+          },
+          "scope": "Recorded HcclBackend calls; excludes the direct sampling token broadcast. Payload is logical input, not wire bytes."
+        },
+        "communication_wait_evidence": {
+          "communication_wait_detail_event_count": 20140,
+          "communication_wait_detail_unique_task_count": 20140,
+          "duplicate_detail_task_key_count": 0,
+          "matched_physical_wait_event_count": 20140,
+          "matched_unique_task_count": 20140,
+          "unmatched_detail_unique_task_count": 0,
+          "matched_unique_task_fraction": 1.0,
+          "detail_nonzero_host_duration_estimate_count": 1020,
+          "detail_host_duration_estimate_value_counts": {
+            "0.02": 1020,
+            "0.0": 19120
+          },
+          "host_duration_estimate_used_for_timing": false,
+          "physical_duration_le_0_02us_count": 10044,
+          "physical_duration_le_0_02us_union_us": 176.93999998648323,
+          "physical_duration_gt_0_02us_count": 10096,
+          "physical_duration_gt_0_02us_union_us": 134744.33349998397,
+          "matched_physical_wait_union_us": 134744.33349998397,
+          "source": "CANN get_hccl_task_data joins host a.duration AS duration_estimated to AscendTask b.duration AS duration. Timing uses matched hardware Chrome X-event dur; the host estimate is retained only as metadata."
+        },
+        "flow_attribution": {
+          "finish_count": 101738,
+          "ambiguous_source_count": 0,
+          "linked_device_event_count": 101738,
+          "linked_collective_envelope_count": 1020,
+          "unattributed_compute_event_count": 12,
+          "unattributed_compute_union_us": 839.2965000000058,
+          "unattributed_device_event_count": 52456
+        },
+        "unknown_tasks": [
+          {
+            "name": "PROFILING_ENABLE",
+            "task_type": "PROFILING_ENABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.02,
+            "duration_union_us": 0.02
+          },
+          {
+            "name": "PROFILING_DISABLE",
+            "task_type": "PROFILING_DISABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.019999999552965164,
+            "duration_union_us": 0.019999999552965164
+          },
+          {
+            "name": "PLACE_HOLDER_SQE",
+            "task_type": "PLACE_HOLDER_SQE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.0,
+            "duration_union_us": 0
+          }
+        ],
+        "cann_statistic_check": {
+          "passed": true,
+          "source": "aics-tp0-1880869_1880869_20261023144702243_ascend_pt/PROF_000001_20261023144702265_01880869MCHOEPQR/mindstudio_profiler_output/communication_statistic_20261023144737.csv",
+          "source_sha256": "e35ca66e36d903bcab7745855bef3c7cf0e9a03e6ce29691b6e4721a9b947426",
+          "rows": [
+            {
+              "operation": "all_reduce",
+              "count": 980,
+              "trace_duration_sum_us": 182643.76800000237,
+              "cann_csv_duration_sum_us": 182643.758,
+              "difference_us": 0.010000002366723493
+            },
+            {
+              "operation": "broadcast",
+              "count": 20,
+              "trace_duration_sum_us": 3741.3769999991055,
+              "cann_csv_duration_sum_us": 3741.375,
+              "difference_us": 0.001999999105464667
+            },
+            {
+              "operation": "all_gather",
+              "count": 20,
+              "trace_duration_sum_us": 2494.1279999987455,
+              "cann_csv_duration_sum_us": 2494.13,
+              "difference_us": 0.0020000012546006474
+            }
+          ]
+        }
+      },
+      {
+        "concurrency": 4,
+        "rank": 1,
+        "summary_file": "artifacts/profile-0.8B-tp2-c4.traces-6450f9dd/calibrated-summary-TP1.json",
+        "input_trace": "artifacts/profile-0.8B-tp2-c4.traces-6450f9dd/aics-tp-profile-TP1.trace.compact.json.gz",
+        "input_sha256": "1b46e542af9ef15123e398212bdaeed16a18611d6e0b8cf9cb0388c397114aab",
+        "metrics": {
+          "window_start_relative_us": 0.0,
+          "window_end_relative_us": 8635985.24,
+          "window_duration_us": 8635985.24,
+          "compute_union_us": 1086875.560000112,
+          "communication_union_us": 5782714.800000057,
+          "collective_envelope_union_us": 5703021.199999999,
+          "compute_communication_overlap_us": 76765.98000002494,
+          "compute_without_communication_us": 1010109.5800000872,
+          "exposed_communication_us": 5705948.820000032,
+          "transfer_union_us": 3112.6400000327885,
+          "communication_component_union_us": 5762011.4399999585,
+          "communication_wait_union_us": 5758144.539999995,
+          "wait_union_us": 5764679.359999886,
+          "unknown_union_us": 0.039999999571591616,
+          "aicpu_union_us": 745839.0999999932,
+          "aicpu_compute_union_us": 546760.400000004,
+          "aicpu_communication_component_union_us": 200036.63999998907,
+          "sdma_or_dma_union_us": 9853.300000060175,
+          "device_activity_union_us": 6801239.100000047,
+          "idle_us": 1834746.139999953,
+          "exposed_communication_fraction": 0.6607177596334141,
+          "event_counts": {
+            "communication": 1020,
+            "unknown": 3,
+            "wait": 9344,
+            "compute": 90649,
+            "communication_component": 49221,
+            "transfer": 3857
+          }
+        },
+        "stages": {
+          "decode": {
+            "window_start_relative_us": 1208265.54,
+            "window_end_relative_us": 8625006.92,
+            "window_duration_us": 7416741.38,
+            "compute_union_us": 241112.3200001472,
+            "communication_union_us": 5009227.659999998,
+            "collective_envelope_union_us": 5009227.659999998,
+            "compute_communication_overlap_us": 0.0,
+            "compute_without_communication_us": 241112.3200001472,
+            "exposed_communication_us": 5009227.659999998,
+            "transfer_union_us": 1378.740000000922,
+            "communication_component_union_us": 153398.53999998816,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 5006188.499999922,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 178200.6399999929,
+            "aicpu_compute_union_us": 24802.10000000475,
+            "aicpu_communication_component_union_us": 153398.53999998816,
+            "sdma_or_dma_union_us": 1378.740000000922,
+            "device_activity_union_us": 5258355.520000048,
+            "idle_us": 2158385.859999952,
+            "exposed_communication_fraction": 0.6753946785185057,
+            "event_counts": {
+              "communication": 816,
+              "wait": 4144,
+              "compute": 46145,
+              "communication_component": 816,
+              "transfer": 1889
+            },
+            "collective_operation_counts": {
+              "all_gather": 16,
+              "all_reduce": 784,
+              "broadcast": 16
+            },
+            "communication_overlap_all_compute_us": 0.0,
+            "exposed_communication_against_all_compute_us": 5009227.659999998,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "prefill": {
+            "window_start_relative_us": 18327.52,
+            "window_end_relative_us": 2049765.56,
+            "window_duration_us": 2031438.04,
+            "compute_union_us": 844894.2399999646,
+            "communication_union_us": 697039.8600000012,
+            "collective_envelope_union_us": 693793.5400000012,
+            "compute_communication_overlap_us": 3199.899999999412,
+            "compute_without_communication_us": 841694.3399999652,
+            "exposed_communication_us": 693839.9600000017,
+            "transfer_union_us": 1723.4000000318629,
+            "communication_component_union_us": 46638.100000000915,
+            "communication_wait_union_us": 0,
+            "wait_union_us": 733666.5400000017,
+            "unknown_union_us": 0,
+            "aicpu_union_us": 567638.4600000003,
+            "aicpu_compute_union_us": 521958.29999999923,
+            "aicpu_communication_component_union_us": 46638.100000000915,
+            "sdma_or_dma_union_us": 1723.4000000318629,
+            "device_activity_union_us": 1542003.5800000015,
+            "idle_us": 489434.45999999857,
+            "exposed_communication_fraction": 0.3415511309417056,
+            "event_counts": {
+              "communication": 204,
+              "wait": 1064,
+              "compute": 44492,
+              "communication_component": 204,
+              "transfer": 1964
+            },
+            "collective_operation_counts": {
+              "all_reduce": 196,
+              "broadcast": 4,
+              "all_gather": 4
+            },
+            "communication_overlap_all_compute_us": 3199.899999999412,
+            "exposed_communication_against_all_compute_us": 693839.9600000017,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          },
+          "unattributed": {
+            "window_start_relative_us": 0.0,
+            "window_end_relative_us": 8635985.24,
+            "window_duration_us": 8635985.24,
+            "compute_union_us": 869.000000000171,
+            "communication_union_us": 5758190.519999951,
+            "collective_envelope_union_us": 0,
+            "compute_communication_overlap_us": 0.0,
+            "compute_without_communication_us": 869.000000000171,
+            "exposed_communication_us": 5758190.519999951,
+            "transfer_union_us": 10.500000000003638,
+            "communication_component_union_us": 5758190.519999951,
+            "communication_wait_union_us": 5758144.539999995,
+            "wait_union_us": 52948.81999992828,
+            "unknown_union_us": 0.039999999571591616,
+            "aicpu_union_us": 0,
+            "aicpu_compute_union_us": 0,
+            "aicpu_communication_component_union_us": 0,
+            "sdma_or_dma_union_us": 6751.16000002739,
+            "device_activity_union_us": 5768310.079999913,
+            "idle_us": 2867675.1600000868,
+            "exposed_communication_fraction": 0.6667670636268886,
+            "event_counts": {
+              "unknown": 3,
+              "wait": 4136,
+              "compute": 12,
+              "communication_component": 48201,
+              "transfer": 4
+            },
+            "collective_operation_counts": {},
+            "communication_overlap_all_compute_us": 76563.20000002491,
+            "exposed_communication_against_all_compute_us": 5681627.319999926,
+            "scope": "Stage task unions; use rank metrics for idle and cross-stage overlap. exposed_communication_against_all_compute_us also accounts for compute attributed to other stages."
+          }
+        },
+        "collective_operation_counts": {
+          "all_gather": 20,
+          "all_reduce": 980,
+          "broadcast": 20
+        },
+        "collective_calls_per_generated_token": 15.9375,
+        "actual_output_tokens": 64,
+        "backend_recording": {
+          "calls": {
+            "all_reduce": 980,
+            "all_gather_single": 20
+          },
+          "logical_payload_bytes": 227434496,
+          "forward_count": 20,
+          "forward_batch_size_counts": {
+            "1": 5,
+            "3": 1,
+            "4": 14
+          },
+          "scope": "Recorded HcclBackend calls; excludes the direct sampling token broadcast. Payload is logical input, not wire bytes."
+        },
+        "communication_wait_evidence": {
+          "communication_wait_detail_event_count": 20100,
+          "communication_wait_detail_unique_task_count": 20100,
+          "duplicate_detail_task_key_count": 0,
+          "matched_physical_wait_event_count": 20100,
+          "matched_unique_task_count": 20100,
+          "unmatched_detail_unique_task_count": 0,
+          "matched_unique_task_fraction": 1.0,
+          "detail_nonzero_host_duration_estimate_count": 1020,
+          "detail_host_duration_estimate_value_counts": {
+            "0.02": 1020,
+            "0.0": 19080
+          },
+          "host_duration_estimate_used_for_timing": false,
+          "physical_duration_le_0_02us_count": 8307,
+          "physical_duration_le_0_02us_union_us": 141.38000005741907,
+          "physical_duration_gt_0_02us_count": 11793,
+          "physical_duration_gt_0_02us_union_us": 5758144.539999997,
+          "matched_physical_wait_union_us": 5758144.539999997,
+          "source": "CANN get_hccl_task_data joins host a.duration AS duration_estimated to AscendTask b.duration AS duration. Timing uses matched hardware Chrome X-event dur; the host estimate is retained only as metadata."
+        },
+        "flow_attribution": {
+          "finish_count": 101790,
+          "ambiguous_source_count": 0,
+          "linked_device_event_count": 101790,
+          "linked_collective_envelope_count": 1020,
+          "unattributed_compute_event_count": 12,
+          "unattributed_compute_union_us": 869.000000000171,
+          "unattributed_device_event_count": 52356
+        },
+        "unknown_tasks": [
+          {
+            "name": "PLACE_HOLDER_SQE",
+            "task_type": "PLACE_HOLDER_SQE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.02000000001862645,
+            "duration_union_us": 0.02000000001862645
+          },
+          {
+            "name": "PROFILING_DISABLE",
+            "task_type": "PROFILING_DISABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.019999999552965164,
+            "duration_union_us": 0.019999999552965164
+          },
+          {
+            "name": "PROFILING_ENABLE",
+            "task_type": "PROFILING_ENABLE",
+            "category": "",
+            "kind": "unknown",
+            "classification_evidence": "Device timeline event without a recognized task classification",
+            "count": 1,
+            "duration_sum_us": 0.0,
+            "duration_union_us": 0
+          }
+        ],
+        "cann_statistic_check": {
+          "passed": true,
+          "source": "aics-tp1-1880871_1880871_20261023144702243_ascend_pt/PROF_000001_20261023144702265_01880871EFGKLLPM/mindstudio_profiler_output/communication_statistic_20261023144737.csv",
+          "source_sha256": "5791097fdf7dd0c497d5ca60559733e949426fa2c13605006707674ff365a7d3",
+          "rows": [
+            {
+              "operation": "all_reduce",
+              "count": 980,
+              "trace_duration_sum_us": 5613905.920000007,
+              "cann_csv_duration_sum_us": 5613905.92,
+              "difference_us": 7.450580596923828e-09
+            },
+            {
+              "operation": "broadcast",
+              "count": 20,
+              "trace_duration_sum_us": 60208.25999999943,
+              "cann_csv_duration_sum_us": 60208.26,
+              "difference_us": 5.748006515204906e-10
+            },
+            {
+              "operation": "all_gather",
+              "count": 20,
+              "trace_duration_sum_us": 28907.019999999844,
+              "cann_csv_duration_sum_us": 28907.02,
+              "difference_us": 1.5643308870494366e-10
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "source_sha256": {
+    "python/tokenspeed/runtime/distributed/comm_backend/hccl.py": "2e46c210ee1f95ef18f6f3854c732808cf4d7ffa71b70398426b585ed2b13c00",
+    "python/tokenspeed/runtime/layers/logits_processor.py": "ef6d4dd0e6dc5a5d615ffa0b851dce03c5f86ad6f04c06abcc74d67cdfd331b3",
+    "python/tokenspeed/runtime/models/qwen3_5.py": "1f47e4d1c512b6eb511e7e98c05de72e89565b5e0a4dc0b43d317b5ec9591c9e",
+    "tokenspeed-kernel/python/tokenspeed_kernel/ops/attention/gdn/ascend.py": "0c7a02973f245c2dc58af6d74c4169301693dadce780a71e8ceaf8fe75469ba4",
+    "tokenspeed-kernel-npu/python/tokenspeed_kernel_npu/ops/mha.py": "dcafd5df7c2cc55cbdc7bcb20b9360f6a125de86676c31a3108b303caab3be4b",
+    "examples/aics_qwen35_tp2/run.py": "d3f625547e6bedd7fe042cb67533004fd8ee75375c361372edb3f584e94ff665",
+    "examples/aics_qwen35_tp2/hooks.py": "09b039cc6ee7c81e781764e283c8d0d20c0a964bf6e8800d2d307093646cc39e",
+    "examples/aics_qwen35_tp2/memory.py": "2f470b39e65b748f2c8d1ed796936b5adc3433eb7f00f423cc7df1f45a06204a",
+    "examples/aics_qwen35_tp2/metrics.py": "135d863eeece2525da40af1f6141186c6d4f1988e34e48f8c743875a7d249dbe"
+  }
+}

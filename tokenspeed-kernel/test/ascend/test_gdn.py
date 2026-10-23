@@ -118,6 +118,122 @@ def test_chunk_scan_matches_sequential_reference(device, dtype, dims):
 
 
 @pytest.mark.parametrize("device", DEVICES)
+@pytest.mark.parametrize("value_ratio", [1, 2, 3])
+def test_tp2_head_shards_match_full_reference_through_decode(device, value_ratio):
+    """The Qwen head groups stay aligned when each rank keeps half the heads."""
+    torch.manual_seed(480 + value_ratio)
+    key_heads, dim = 16, 128
+    value_heads = key_heads * value_ratio
+    bounds = [0, 3, 9]
+    dtype = torch.bfloat16
+    q = torch.randn(1, 9, key_heads, dim, device=device, dtype=dtype)
+    k = torch.randn_like(q)
+    v = torch.randn(1, 9, value_heads, dim, device=device, dtype=dtype)
+    g = -torch.rand(1, 9, value_heads, device=device) * 0.2
+    beta = torch.rand(1, 9, value_heads, device=device).to(dtype)
+    initial = torch.randn(2, value_heads, dim, dim, device=device) * 0.05
+    expected_prefill, expected_state = reference(
+        q, k, v, g, beta, initial, bounds, dim**-0.5, True
+    )
+    prefill = gdn_chunk_prefill if device == "npu" else ascend_gdn_chunk_prefill
+    decode = gdn_decode_step if device == "npu" else ascend_gdn_decode_step
+    states, outputs = [], []
+    for rank in range(2):
+        key_slice = slice(rank * 8, (rank + 1) * 8)
+        value_slice = slice(rank * value_heads // 2, (rank + 1) * value_heads // 2)
+        result = prefill(
+            q[:, :, key_slice].contiguous(),
+            k[:, :, key_slice].contiguous(),
+            v[:, :, value_slice].contiguous(),
+            g[:, :, value_slice].contiguous(),
+            beta[:, :, value_slice].contiguous(),
+            scale=dim**-0.5,
+            initial_state=initial[:, value_slice].contiguous(),
+            cu_seqlens=torch.tensor(bounds, dtype=torch.int32, device=device),
+            qk_l2norm=True,
+            output_final_state=True,
+            output_h=False,
+        )
+        assert result.out.device.type == device
+        outputs.append(result.out)
+        states.append(result.final_state)
+    torch.testing.assert_close(
+        torch.cat(outputs, dim=2).cpu().float(),
+        expected_prefill.to(dtype).float(),
+        rtol=8e-3,
+        atol=2e-3,
+    )
+    torch.testing.assert_close(
+        torch.cat(states, dim=1).cpu().double(), expected_state, rtol=2e-4, atol=2e-5
+    )
+
+    # Continue both requests for three tokens, swapping state pages each step.
+    steps = 3
+    q = torch.randn(2, steps, key_heads, dim, device=device, dtype=dtype)
+    k = torch.randn_like(q)
+    v = torch.randn(2, steps, value_heads, dim, device=device, dtype=dtype)
+    a = torch.randn(2, steps, value_heads, device=device, dtype=dtype)
+    b = torch.randn_like(a)
+    A_log = torch.linspace(-2, 0, value_heads, device=device)
+    dt_bias = torch.linspace(-0.5, 0.5, value_heads, device=device)
+    g = ascend_gdn_gating(A_log, a, dt_bias).reshape(1, 2 * steps, value_heads)
+    beta = b.float().sigmoid().to(dtype).reshape(1, 2 * steps, value_heads)
+    expected_decode, expected_final = reference(
+        q.reshape(1, 2 * steps, key_heads, dim),
+        k.reshape(1, 2 * steps, key_heads, dim),
+        v.reshape(1, 2 * steps, value_heads, dim),
+        g,
+        beta,
+        expected_state,
+        [0, steps, 2 * steps],
+        dim**-0.5,
+        True,
+    )
+    outputs, final_states = [], []
+    for rank in range(2):
+        key_slice = slice(rank * 8, (rank + 1) * 8)
+        value_slice = slice(rank * value_heads // 2, (rank + 1) * value_heads // 2)
+        pool = torch.zeros(5, value_heads // 2, dim, dim, device=device)
+        pool[1:3].copy_(states[rank])
+        reads = torch.tensor([1, 2], dtype=torch.int32, device=device)
+        writes = torch.tensor([3, 4], dtype=torch.int32, device=device)
+        values = []
+        for step in range(steps):
+            values.append(
+                decode(
+                    q[:, step : step + 1, key_slice].contiguous(),
+                    k[:, step : step + 1, key_slice].contiguous(),
+                    v[:, step : step + 1, value_slice].contiguous(),
+                    A_log=A_log[value_slice],
+                    a=a[:, step : step + 1, value_slice].contiguous(),
+                    dt_bias=dt_bias[value_slice],
+                    b=b[:, step : step + 1, value_slice].contiguous(),
+                    initial_state=pool,
+                    initial_state_indices=reads,
+                    output_state_indices=writes,
+                    scale=dim**-0.5,
+                    use_qk_l2norm=True,
+                )
+            )
+            reads, writes = writes, reads
+        outputs.append(torch.cat(values, dim=1))
+        final_states.append(pool.index_select(0, reads.long()))
+        assert pool[0].count_nonzero().item() == 0
+    torch.testing.assert_close(
+        torch.cat(outputs, dim=2).cpu().float(),
+        expected_decode.reshape(2, steps, value_heads, dim).to(dtype).float(),
+        rtol=8e-3,
+        atol=2e-3,
+    )
+    torch.testing.assert_close(
+        torch.cat(final_states, dim=1).cpu().double(),
+        expected_final,
+        rtol=2e-4,
+        atol=2e-5,
+    )
+
+
+@pytest.mark.parametrize("device", DEVICES)
 def test_split_prefill_matches_whole_sequence(device):
     torch.manual_seed(27)
     q = torch.randn(1, 139, 2, 16, dtype=torch.bfloat16, device=device)
