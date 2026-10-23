@@ -82,6 +82,33 @@ def mha_prefill(
         sinks=sinks,
         return_lse=return_lse,
     )
+    if q.shape[-1] == 256:
+        # CANN 9's TND path only accepts head dimensions 64/128/192.
+        # BSH supports 256; dispatch each unpadded request separately.
+        output = torch.empty_like(q)
+        for start, end in zip(cu_seqlens_cpu, cu_seqlens_cpu[1:]):
+            length = end - start
+            if length == 0:
+                continue
+            # A single query has no future K/V positions. CANN dispatches it
+            # through decode tiling, which rejects the compressed causal mask.
+            use_causal_mask = length > 1
+            request_output, _ = torch_npu.npu_fused_infer_attention_score(
+                q[start:end].reshape(1, length, -1).contiguous(),
+                k[start:end].reshape(1, length, -1).contiguous(),
+                v[start:end].reshape(1, length, -1).contiguous(),
+                atten_mask=_causal_mask(q.device) if use_causal_mask else None,
+                actual_seq_lengths=[length],
+                actual_seq_lengths_kv=[length],
+                num_heads=q.shape[1],
+                num_key_value_heads=k.shape[1],
+                scale=_scale(q, softmax_scale),
+                input_layout="BSH",
+                sparse_mode=2 if use_causal_mask else 0,
+            )
+            output[start:end] = request_output.reshape_as(q[start:end])
+        return output
+
     output, _ = torch_npu.npu_fused_infer_attention_score(
         q,
         k,
@@ -129,6 +156,41 @@ def mha_extend_with_kvcache(
     )
     if q_scale is not None or k_scale is not None or v_scale is not None:
         raise NotImplementedError("Ascend MHA does not support scaled FP8 cache")
+
+    if q.shape[-1] == 256:
+        if torch.npu.is_current_stream_capturing():
+            raise NotImplementedError(
+                "Ascend head_dim=256 paged extend requires eager execution"
+            )
+        # BSH uses per-request lengths, unlike TND's cumulative Q offsets.
+        # Only this small metadata crosses to the CPU; Q/K/V stay on the NPU.
+        offsets = cu_seqlens_q.cpu().tolist()
+        lengths = cache_seqlens.cpu().tolist()
+        output = torch.empty_like(q)
+        for batch, (start, end) in enumerate(zip(offsets, offsets[1:])):
+            length = end - start
+            if length == 0:
+                continue
+            # Queries align to the cache suffix, so the one-query case can
+            # attend to every visible key and requires no causal mask.
+            use_causal_mask = is_causal and length > 1
+            request_output, _ = torch_npu.npu_fused_infer_attention_score(
+                q[start:end].reshape(1, length, -1).contiguous(),
+                k_cache.flatten(2),
+                v_cache.flatten(2),
+                atten_mask=_causal_mask(q.device) if use_causal_mask else None,
+                actual_seq_lengths=[length],
+                actual_seq_lengths_kv=[lengths[batch]],
+                block_table=page_table[batch : batch + 1],
+                num_heads=q.shape[1],
+                num_key_value_heads=k_cache.shape[2],
+                scale=_scale(q, softmax_scale),
+                input_layout="BSH",
+                sparse_mode=3 if use_causal_mask else 0,
+                block_size=k_cache.shape[1],
+            )
+            output[start:end] = request_output.reshape_as(q[start:end])
+        return output
 
     output, _ = torch_npu.npu_fused_infer_attention_score(
         q,

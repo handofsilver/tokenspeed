@@ -399,6 +399,14 @@ or at the first call instead of falling back — the FluentLLM discipline
 
 ## Logprobs: one arithmetic for prompt and output
 
+Prefill sampling uses the last input position as its random-stream offset.
+That offset table must be independent of the runtime's committed cache
+lengths: sampling must not advance or overwrite the frontier that the next
+decode uses for positions and KV access. `_with_prefill_sample_offsets`
+clones the length table before writing offsets, including on backends whose
+out-of-place indexed-copy implementation can modify its source. Frontier
+advancement remains the executor's separate, once-per-forward operation.
+
 A returned logprob is the launch's `--logprob-order` applied to the row --
 `gather_token_logprobs` in `sampling/utils.py`, the one function both
 consumers call: `log_softmax(logits, -1, dtype=float32)` gathered at the token

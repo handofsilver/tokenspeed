@@ -1040,8 +1040,8 @@ class Qwen3_5ForCausalLM(nn.Module):
         # ROCm HIP graph, each cross-stream edge costs microseconds of queue
         # signaling; at decode the join alone idles the GPU for about 15 us
         # per MoE layer, longer than the shared expert takes, so it runs
-        # inline there.
-        alt_stream = None if current_platform().is_amd else torch.cuda.Stream()
+        # inline there. Ascend also runs it inline; its runtime has no CUDA stream.
+        alt_stream = torch.cuda.Stream() if current_platform().is_nvidia else None
 
         # Embedding layer
         self.embed_tokens = VocabParallelEmbedding(

@@ -125,6 +125,19 @@ def rmsnorm_fn(
     Pass False for producer-written weights. Returns a tensor shaped like x,
     quantized to static FP8 with ``fp8_scale`` when one is given.
     """
+    if x.device.type == "npu":
+        from tokenspeed_kernel.ops.layernorm.ascend import gated_rmsnorm
+
+        return gated_rmsnorm(
+            x,
+            weight,
+            z=z,
+            eps=eps,
+            group_size=group_size,
+            norm_before_gate=norm_before_gate,
+            sigmoid_gate=sigmoid_gate,
+            fp8_scale=fp8_scale,
+        )
     enable_pdl = pdl_enabled()
     x_shape_og = x.shape
     x = x.reshape(-1, x.shape[-1])

@@ -162,6 +162,8 @@ def _prepare_gdn_decode_state_path(
 
 def gdn_decode_solution(ssm_dtype: torch.dtype) -> str | None:
     """The GDN decode/verify solution forced for a state dtype (see above)."""
+    if current_platform().is_npu:
+        return "torch_npu"
     return "triton" if ssm_dtype == torch.bfloat16 else None
 
 
@@ -1821,7 +1823,7 @@ class MambaAttnBackend(AttentionBackend):
         # KDA's verify consumes zero-copy strided views. When recurrent-state
         # replay is enabled, the split kernel also saves the persistent inputs
         # needed to reconstruct accepted state later.
-        if (
+        if current_platform().is_npu or (
             (self._verify_packed_qkv_views or scan_replay is not None)
             and replay_inputs is None
             and mixed_qkv.stride(-1) == 1
@@ -2168,7 +2170,12 @@ class MambaAttnBackend(AttentionBackend):
         _reject_skip_term(D)
         head_k_dim = query.shape[3]
         beta = b.sigmoid()
-        g = fused_gdn_gating(A_log, a, dt_bias)
+        if current_platform().is_npu:
+            from tokenspeed_kernel.ops.attention.gdn.ascend import ascend_gdn_gating
+
+            g = ascend_gdn_gating(A_log, a, dt_bias)
+        else:
+            g = fused_gdn_gating(A_log, a, dt_bias)
         g = g.unsqueeze(0)
         beta = beta.unsqueeze(0)
 

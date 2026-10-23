@@ -269,12 +269,7 @@ class GemmaRMSNorm(torch.nn.Module):
             else:
                 return x
 
-        if _is_amd:
-            if x.shape[0] == 0:
-                if residual is not None:
-                    return x, residual
-                else:
-                    return x
+        if _is_amd or _platform.is_npu:
             orig_dtype = x.dtype
             if residual is not None:
                 x = x + residual
@@ -311,7 +306,8 @@ class GemmaRMSNorm(torch.nn.Module):
         """``forward(x, residual)``, plus the normed rows in static FP8 when ``fp8_scale`` is given.
 
         Returns the normed rows, their FP8 copy or ``None`` where it is not
-        made (AMD), and the updated residual.
+        made (AMD), and the updated residual. Ascend currently accepts only
+        unquantized normalization (``fp8_scale=None``).
         """
         x, x_fp8, _, residual = self._add_norm(
             x, residual, fp8_scale=fp8_scale, fp4_scale=None
@@ -329,6 +325,7 @@ class GemmaRMSNorm(torch.nn.Module):
         Returns the normed rows, their NVFP4 ``(values, scales)`` or ``None``
         where the copy cannot equal ``fp4_quantize``'s (see
         ``nvfp4_copy_supported``) or rows are not BF16, and the updated residual.
+        Ascend currently accepts only ``fp4_scale=None``.
         """
         x, _, x_fp4, residual = self._add_norm(
             x, residual, fp8_scale=None, fp4_scale=fp4_scale
@@ -348,6 +345,13 @@ class GemmaRMSNorm(torch.nn.Module):
         tuple[torch.Tensor, torch.Tensor] | None,
         torch.Tensor,
     ]:
+        if _platform.is_npu:
+            if fp8_scale is not None or fp4_scale is not None:
+                raise NotImplementedError(
+                    "Ascend GemmaRMSNorm does not support quantized output copies"
+                )
+            x, residual = self(x, residual)
+            return x, None, None, residual
         if _is_amd:
             x, residual = self(x, residual)
             return x, None, None, residual

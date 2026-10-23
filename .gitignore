@@ -202,3 +202,15 @@ Testing/
 AGENTS.local.md
 AGENTS.override.md
 outputs/
+
+# Local coursework data
+/models/
+/artifacts/
+/report/
+/reports/
+/deliverables/
+*.safetensors
+*.pt
+*.pth
+*.log
+.DS_Store

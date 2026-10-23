@@ -224,10 +224,15 @@ def test_qk_rmsnorm_has_one_platform_contract(monkeypatch, vendor: str) -> None:
     assert calls == [(q, k, q_weight, k_weight, 1e-6, {"weight_offset": 1.0})]
 
 
-def test_ascend_forms_the_offset_weight_in_the_weight_dtype(monkeypatch):
+def test_ascend_keeps_offset_normalization_in_fp32(monkeypatch):
     calls = []
     npu = types.ModuleType("tokenspeed_kernel_npu.ops.layernorm")
-    npu.qk_rmsnorm = lambda *args: calls.append(args)
+
+    def record(*args):
+        calls.append(args)
+        return args[:2]
+
+    npu.qk_rmsnorm = record
     npu.rmsnorm = None
     for name in ("tokenspeed_kernel_npu", "tokenspeed_kernel_npu.ops"):
         monkeypatch.setitem(sys.modules, name, types.ModuleType(name))
@@ -238,13 +243,18 @@ def test_ascend_forms_the_offset_weight_in_the_weight_dtype(monkeypatch):
     # 1 + 2^-9 is not a bf16 value: formed in bf16 it rounds to 1.0.
     q_weight = torch.tensor([2.0**-9, 0.5, -0.25], dtype=torch.bfloat16)
     k_weight = torch.tensor([3.0, 2.0**-9, 0.125], dtype=torch.bfloat16)
-    q, k = object(), object()
-    ascend.qk_rmsnorm(q, k, q_weight, k_weight, 1e-5, weight_offset=1.0)
+    q = torch.randn(2, 6, dtype=torch.bfloat16)
+    k = torch.randn(2, 3, dtype=torch.bfloat16)
+    q_out, k_out = ascend.qk_rmsnorm(q, k, q_weight, k_weight, 1e-5, weight_offset=1.0)
     ((got_q, got_k, got_q_weight, got_k_weight, eps),) = calls
-    assert got_q is q and got_k is k and eps == 1e-5
+    assert got_q.dtype == got_k.dtype == torch.float32 and eps == 1e-5
+    torch.testing.assert_close(got_q, q.float())
+    torch.testing.assert_close(got_k, k.float())
+    assert q_out.dtype == q.dtype and k_out.dtype == k.dtype
     for got, weight in ((got_q_weight, q_weight), (got_k_weight, k_weight)):
-        assert got.dtype == torch.bfloat16
-        assert torch.equal(got, (weight.float() + 1.0).to(torch.bfloat16))
+        assert got.dtype == torch.float32
+        assert torch.equal(got, weight.float() + 1.0)
     # A zero offset hands the stored weights through untouched.
     ascend.qk_rmsnorm(q, k, q_weight, k_weight, 1e-5, weight_offset=0.0)
+    assert calls[1][0] is q and calls[1][1] is k
     assert calls[1][2] is q_weight and calls[1][3] is k_weight

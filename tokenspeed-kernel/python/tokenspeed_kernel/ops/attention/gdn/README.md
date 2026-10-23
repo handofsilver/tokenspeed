@@ -1,5 +1,37 @@
 # GDN kernels
 
+## Ascend eager execution
+
+The `torch_npu` solution keeps the existing Qwen3.5 model, hybrid attention
+backend, scheduler, and cache pages. Tensor arithmetic runs on the NPU with
+FP32 recurrent state and accumulation. Prefill processes 64-token chunks,
+solving each chunk's unit lower triangular delta-rule system directly with
+`torch.linalg.solve_triangular`, without constructing an inverse. This avoids
+the cancellation errors of matrix-power inverses for highly correlated keys.
+Decode updates one token per request. Both use
+the public K-last state layout `[pages, value_heads, value_dim, key_dim]`.
+
+The same registration provides short depthwise causal convolution. Prefill
+handles packed variable-length inputs and short resumed windows; decode
+reads the input page before writing the designated output page. Padding
+indices do not write cache state. The scheduler continues to own the null
+page, live pages, and shared prefix snapshots.
+
+This baseline requires `--enforce-eager --disable-prefill-graph --disable-pdl`
+and ordinary autoregressive generation. It rejects speculative decoding,
+graph capture, and intermediate GDN checkpoints. Sequence bounds and page
+indices may synchronize to the host for eager planning; model tensors and
+recurrent arithmetic are never moved to the CPU. Native CANN recurrent GDN
+is not used because the available API requires BF16 recurrent state.
+On the tested CANN version, triangular solve runs on the NPU's device-side
+AI CPU, with AI Core auxiliary kernels; it is not a host CPU fallback.
+
+`tokenspeed-kernel/test/ascend/test_gdn.py` compares the kernels with an
+independent FP64 sequential recurrence and grouped convolution reference.
+It covers variable lengths across chunk boundaries, additive normalization
+epsilon, extreme decay, highly correlated keys, resumed prefill, strided decode, page remapping,
+padding, and grouped gated RMSNorm. Run it on an explicitly selected NPU.
+
 ## FlashInfer PDL adapters
 
 The FlashInfer adapter retains the upstream launch geometry and runtime ABI,

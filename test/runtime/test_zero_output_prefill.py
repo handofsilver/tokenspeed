@@ -256,6 +256,86 @@ def test_prefill_sample_offset_ignores_how_the_prompt_was_split():
     assert offsets(bare, torch.tensor([3], dtype=torch.int32)) is bare
 
 
+@pytest.mark.parametrize("device", ["cpu", "npu"])
+@pytest.mark.parametrize(
+    "slots,prefixes,lengths",
+    [
+        ([5], [0], [17]),
+        ([1], [0], [129]),
+        ([5], [128], [1]),
+        ([3], [0], [513]),
+        ([3], [512], [1]),
+        ([5, 1, 3], [0, 128, 512], [129, 1, 1]),
+    ],
+    ids=["short", "page-tail", "page-tail-chunk", "long", "long-chunk", "batch"],
+)
+def test_prefill_sample_offsets_preserve_runtime_frontier(
+    device, slots, prefixes, lengths
+):
+    """Sampling offsets must never advance the runtime's accepted frontier.
+
+    On the course server's torch_npu 2.9.0, out-of-place index_copy modifies
+    its source even though its result has a distinct data pointer. Verify
+    observable writes, the next prefill/decode advances, and a padding slot.
+    """
+    if device == "npu":
+        pytest.importorskip("torch_npu")
+        if not torch.npu.is_available():
+            pytest.skip("Ascend NPU required")
+
+    info_cls = load_symbol(
+        RUNTIME + "sampling/sampling_batch_info.py", "SamplingBatchInfo"
+    )
+    offsets = _load_prefill_sample_offsets()
+    advance = load_symbol(
+        "tokenspeed-kernel/python/tokenspeed_kernel/ops/metadata/accepted_frontier.py",
+        "_advance_accepted_frontier_torch",
+    )
+    initial = [41, 7, 23, 19, 5, 0, 31, 0]
+    for slot, prefix in zip(slots, prefixes):
+        initial[slot] = prefix
+    padding_slot = len(initial) - 1
+    cache_lengths = torch.tensor(initial, dtype=torch.int32, device=device)
+    req_slots = torch.tensor(slots, dtype=torch.int64, device=device)
+    input_lengths = torch.tensor(lengths, dtype=torch.int32, device=device)
+    info = info_cls(req_pool_indices=req_slots, valid_cache_lengths=cache_lengths)
+
+    out = offsets(info, input_lengths)
+    expected_offsets = initial.copy()
+    for slot, prefix, length in zip(slots, prefixes, lengths):
+        expected_offsets[slot] = prefix + length - 1
+    assert out.valid_cache_lengths.tolist() == expected_offsets
+    assert cache_lengths.tolist() == initial
+
+    # Test isolation through writes, not data-pointer inequality: the latter
+    # was insufficient to catch the actual NPU index_copy side effect.
+    out.valid_cache_lengths.fill_(-99)
+    assert cache_lengths.tolist() == initial
+
+    padded_slots = torch.tensor(
+        slots + [padding_slot], dtype=torch.int64, device=device
+    )
+    padded_lengths = torch.tensor(lengths + [0], dtype=torch.int32, device=device)
+    accepted = torch.ones(len(slots) + 1, dtype=torch.int32, device=device)
+    expected_frontier = initial.copy()
+    for num_extends, increment in ((len(slots), lengths), (0, [1] * len(slots))):
+        advance(
+            padded_slots,
+            padded_lengths,
+            accepted,
+            cache_lengths,
+            num_extends,
+            padding_slot,
+            None,
+            None,
+            None,
+            None,
+        )
+        for slot, delta in zip(slots, increment):
+            expected_frontier[slot] += delta
+        assert cache_lengths.tolist() == expected_frontier
+
+
 def test_nan_and_oov_map_to_original_decode_rows():
     ctx = SimpleNamespace(
         bs=3, num_extends=2, output_layout=ForwardOutputLayout(2, 1, 1, 2)

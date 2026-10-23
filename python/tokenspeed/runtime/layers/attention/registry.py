@@ -838,7 +838,11 @@ def _kda_linear_attn_backend(
 def _gdn_linear_attn_backend(
     server_args: ServerArgs, config: AttnConfig
 ) -> AttentionBackend:
-    del server_args
+    if current_platform().is_npu:
+        if not server_args.enforce_eager:
+            raise ValueError("Ascend GDN requires --enforce-eager")
+        if server_args.speculative_algorithm is not None:
+            raise ValueError("Ascend GDN does not support speculative decoding")
     from tokenspeed.runtime.layers.attention.backends.state.gdn import (
         GdnAttnBackend,
     )
