@@ -1,13 +1,13 @@
 # Qwen3.5-0.8B on Ascend 910C
 
-AI Computing Systems 课程作业：在 TokenSpeed 中适配 Qwen3.5-0.8B 的单芯片昇腾推理。
-当前实现使用 BF16、eager 执行和 greedy 采样，包含 Gated DeltaNet、归一化与 attention 适配，以及正确性检查、性能测试和 profiling 脚本。
+AI Computing Systems 课程第一次作业：在单颗 Ascend 910C 上运行 Qwen3.5-0.8B。
+适配内容包括 Gated DeltaNet（GDN）、因果卷积、归一化，以及 256 维头的注意力计算。
 
 - [运行说明](examples/aics_qwen35/README.md)
 - [实验结果与实现说明](docs/recipes/qwen35-ascend-hw1.md)
 - [环境配置](examples/aics_qwen35/environment-notes.md)
 
-本仓库基于 [lightseekorg/tokenspeed](https://github.com/lightseekorg/tokenspeed)，起点为 `cf898936350f46ac6d0443b154739beaf51fe8a0`，保留上游历史与 MIT 许可证。以下为上游项目介绍。
+基于 [lightseekorg/tokenspeed](https://github.com/lightseekorg/tokenspeed) 的 `cf898936350f46ac6d0443b154739beaf51fe8a0` 版本开发。
 
 ---
 
