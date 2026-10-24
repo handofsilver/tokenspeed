@@ -139,5 +139,6 @@ SSM 的最后两维是 `[value_dim,key_dim]`。表中是逻辑形状，conv 分�
 `tokenspeed-kernel/test/ascend/test_gdn.py` 中的
 `test_tp2_head_shards_match_full_reference_through_decode` 覆盖 1、2、3 倍
 value heads：将两份本地 prefill 输出和 SSM 沿 head 维拼回，随后连续 decode
-并交换状态页，与完整 head 的独立逐 token 参考比较。完整模型的 TP=1/TP=2
-对照还需覆盖权重加载、层间 all-reduce、KV cache 和采样路径。
+并交换状态页，与完整 head 的独立逐 token 参考比较。四个完整模型还进行了
+TP1/TP2 连续推理对照，覆盖权重加载、层间 all-reduce、KV cache 和采样路径；
+比较结果及 4B、9B 的数值差异见[运行说明](../../examples/aics_qwen35_tp2/README.md#正确性对照)。

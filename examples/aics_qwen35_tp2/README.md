@@ -75,7 +75,7 @@ python -m examples.aics_qwen35_tp2.run native \
   --output /path/to/results/27b-tp2-validation.json
 ```
 
-27B 纯文本参数占用约 50.098 GiB。TP1 启动前，应确认所选 chip 的空闲 HBM 不低于 **52.9822 GiB**；该预算包括已知 buffer、缓存、0.25 GiB 执行 workspace 预算和额外 2 GiB 余量。本次 TP1 在物理 chip 1 上运行成功，启动前空闲 HBM 为 58.1355 GiB。`max_total_tokens=8192` 实际分配 6 个物理缓存页（含 null 页），启动时得到 `max_single_request_tokens=1536`，可以容纳最长的 513 输入加 16 输出。
+27B 纯文本参数占用约 50.1 GiB。按本次缓存配置，TP1 启动前需预留约 **53 GiB** 空闲 HBM，其中包括 buffer、缓存和执行余量。本次 TP1 在物理 chip 1 上运行成功，启动前空闲 HBM 约为 58.1 GiB。`max_total_tokens=8192` 实际分配 6 个物理缓存页（含 null 页），启动时得到 `max_single_request_tokens=1536`，可以容纳最长的 513 输入加 16 输出。
 
 性能实验把 `--suite` 改为 `benchmark`，`--record-collectives` 改为 `off`。在同一模型上分别设置 TP1/TP2 和 `--concurrency 1/4`，每组可用 `--warmup 2 --repeats 5`。使用上表中的预算，并在运行前重新检查空闲 HBM。
 
@@ -121,7 +121,9 @@ python -m examples.aics_qwen35_tp2.compare \
   --output /path/to/results/4b-reference-comparison.json
 ```
 
-实测中，0.8B、27B 的 TP1/TP2 严格对照通过；4B 有一条请求发生生成分岔，9B 的最大 logprob 差为 0.104253。4B TP2、9B TP1/TP2 分别对独立参考均通过原 0.10 阈值。4B 首次分岔位置的两名候选另用 CPU BF16/FP32 复查：两种精度均将 TP2 选择的 561 排在第一、TP1 选择的 198 排在第二，logit 间隔分别为 0.125 和 0.018093。该检查沿用共同的前两个输出，只计算到第三步。原始比较、补查和各配置的性能数据见 [`results.json`](results.json)。
+实测中，0.8B、27B 的 TP1/TP2 严格对照通过；4B 有一条请求发生生成分岔，9B 的最大 logprob 差为 0.104253。4B TP2、9B TP1/TP2 分别对独立参考均通过原 0.10 阈值。
+
+4B 首次分岔位置的两名候选另用 CPU BF16/FP32 复查：两种精度均将 TP2 选择的 561 排在第一、TP1 选择的 198 排在第二，logit 间隔分别为 0.125 和 0.018093。该检查沿用共同的前两个输出，只计算到第三步。原始比较、补查和各配置的性能数据见 [`results.json`](results.json)。
 
 ## 时间线
 
