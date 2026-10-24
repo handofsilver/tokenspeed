@@ -121,7 +121,7 @@ python -m examples.aics_qwen35_tp2.compare \
   --output /path/to/results/4b-reference-comparison.json
 ```
 
-实测中，0.8B、27B 的 TP1/TP2 严格对照通过；4B 有一条请求发生生成分岔，9B 的最大 logprob 差为 0.104253。4B TP2、9B TP1/TP2 分别对独立参考均通过原 0.10 阈值。原始比较结果和各配置的性能数据见 [`results.json`](results.json)。
+实测中，0.8B、27B 的 TP1/TP2 严格对照通过；4B 有一条请求发生生成分岔，9B 的最大 logprob 差为 0.104253。4B TP2、9B TP1/TP2 分别对独立参考均通过原 0.10 阈值。4B 首次分岔位置的两名候选另用 CPU BF16/FP32 复查：两种精度均将 TP2 选择的 561 排在第一、TP1 选择的 198 排在第二，logit 间隔分别为 0.125 和 0.018093。该检查沿用共同的前两个输出，只计算到第三步。原始比较、补查和各配置的性能数据见 [`results.json`](results.json)。
 
 ## 时间线
 

@@ -624,6 +624,78 @@
             "greedy_disagreements": []
           }
         ]
+      },
+      "first_divergence_precision_check": {
+        "measurement_date": "2026-10-24",
+        "case_id": "B129",
+        "input_tokens": 129,
+        "common_generated_prefix": [
+          4097,
+          13
+        ],
+        "output_step": 3,
+        "device": "cpu",
+        "cache_mode": "cached",
+        "attention_implementation": "eager",
+        "cpu_threads": 16,
+        "source_commit": "dc326b338cad49131e6bf6e89b1b04079e92eeb0",
+        "precision_note": "Both arithmetic dtypes load the same original BF16 checkpoint; FP32 does not recover pre-checkpoint precision.",
+        "candidates": [
+          198,
+          561
+        ],
+        "results": [
+          {
+            "dtype": "bfloat16",
+            "parameter_dtypes": {
+              "torch.bfloat16": 723
+            },
+            "greedy_id": 561,
+            "top2_logit_margin": 0.125,
+            "logit_561_minus_198": 0.125,
+            "candidate_scores": [
+              {
+                "token_id": 198,
+                "logit": 19.125,
+                "logprob": -1.1382497549057007,
+                "rank_by_strictly_greater": 2,
+                "tied_logit_count": 1
+              },
+              {
+                "token_id": 561,
+                "logit": 19.25,
+                "logprob": -1.0132497549057007,
+                "rank_by_strictly_greater": 1,
+                "tied_logit_count": 1
+              }
+            ]
+          },
+          {
+            "dtype": "float32",
+            "parameter_dtypes": {
+              "torch.float32": 723
+            },
+            "greedy_id": 561,
+            "top2_logit_margin": 0.018093109130859375,
+            "logit_561_minus_198": 0.018093109130859375,
+            "candidate_scores": [
+              {
+                "token_id": 198,
+                "logit": 19.197317123413086,
+                "logprob": -1.0617879629135132,
+                "rank_by_strictly_greater": 2,
+                "tied_logit_count": 1
+              },
+              {
+                "token_id": 561,
+                "logit": 19.215410232543945,
+                "logprob": -1.0436948537826538,
+                "rank_by_strictly_greater": 1,
+                "tied_logit_count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
