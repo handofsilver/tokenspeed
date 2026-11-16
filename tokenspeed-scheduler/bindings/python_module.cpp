@@ -508,6 +508,10 @@ NB_MODULE(tokenspeed_scheduler_ext, m) {
         .def("snapshot_pool_free_blocks", &tokenspeed::Scheduler::SnapshotPoolFreeBlocks,
              "Empty parents of the request-private snapshot pool (a leak check: every block belongs to some "
              "suspended request's image).")
+        .def("host_pool_cached_blocks", &tokenspeed::Scheduler::HostPoolCachedBlocks)
+        .def("host_pool_free_blocks", &tokenspeed::Scheduler::HostPoolFreeBlocks)
+        .def("host_evicted_blocks", &tokenspeed::Scheduler::HostEvictedBlocks,
+             "Host cache group entries evicted by the replacement policy, excluding explicit cache clears.")
         .def("host_pool_pinned_blocks", &tokenspeed::Scheduler::HostPoolPinnedBlocks,
              "Host L2 entries pinned by a request -- a suspended request's image, or an in-flight transfer.")
         .def("tail_entries", &tokenspeed::Scheduler::TailEntries,

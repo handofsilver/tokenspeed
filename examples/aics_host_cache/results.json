@@ -1,0 +1,1702 @@
+{
+  "s1-high-off": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 1,
+    "offload": "off",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": null,
+    "reference": null,
+    "comparison": null,
+    "output_tokens": 40,
+    "mean_cycle_ms": 453.29733989201486,
+    "median_ttft_ms": 242.66880983486772,
+    "cycle_output_tokens_per_s": 8.824230031777565,
+    "hits": 0,
+    "misses": 10,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 2067123712,
+        "max_sampled_reserved_bytes": 2371878912,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 241.05015563964844,
+        "group_layout": []
+      }
+    ]
+  },
+  "s1-high-wide": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 1,
+    "offload": "on",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": 2.0,
+    "reference": "s1-high-off",
+    "comparison": {
+      "equal_ids": 40,
+      "output_tokens": 40,
+      "max_selected_logprob_error": 0.058689236640930176,
+      "atol": 0.1
+    },
+    "output_tokens": 40,
+    "mean_cycle_ms": 373.6692549660802,
+    "median_ttft_ms": 104.33941008523107,
+    "cycle_output_tokens_per_s": 10.704653772928415,
+    "hits": 8,
+    "misses": 2,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 2067123712,
+        "max_sampled_reserved_bytes": 2371878912,
+        "host_arena_bytes": 402653184,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          22,
+          26,
+          31,
+          32,
+          32,
+          32
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          22,
+          28,
+          34,
+          40,
+          46,
+          49,
+          51,
+          53
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          7,
+          11
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          260,
+          260,
+          265,
+          265,
+          270,
+          270,
+          275,
+          275
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 194052096,
+        "d2h_bytes": 428507136,
+        "h2d_stream_ms": 13.491099953651428,
+        "d2h_stream_ms": 68.06349980831146,
+        "median_h2d_ms_per_hit": 1.6849499940872192,
+        "median_hit_prefill_ms": 100.76467895507812,
+        "median_miss_prefill_ms": 244.57876586914062,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 9768960
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 9768960
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 1572864
+          }
+        ]
+      }
+    ]
+  },
+  "s2-high-off": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 2,
+    "offload": "off",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": null,
+    "reference": null,
+    "comparison": null,
+    "output_tokens": 40,
+    "mean_cycle_ms": 474.7415159828961,
+    "median_ttft_ms": 202.8681100346148,
+    "cycle_output_tokens_per_s": 8.425637668781661,
+    "hits": 0,
+    "misses": 10,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 200.06866455078125,
+        "group_layout": []
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 198.91455078125,
+        "group_layout": []
+      }
+    ]
+  },
+  "s2-high-wide": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 2,
+    "offload": "on",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": 2.0,
+    "reference": "s2-high-off",
+    "comparison": {
+      "equal_ids": 40,
+      "output_tokens": 40,
+      "max_selected_logprob_error": 0.05272364616394043,
+      "atol": 0.1
+    },
+    "output_tokens": 40,
+    "mean_cycle_ms": 397.8515420574695,
+    "median_ttft_ms": 114.02649013325572,
+    "cycle_output_tokens_per_s": 10.05400149843381,
+    "hits": 8,
+    "misses": 2,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 201326592,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          22,
+          26,
+          31,
+          32,
+          32,
+          32
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          22,
+          28,
+          34,
+          40,
+          46,
+          49,
+          51,
+          53
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          7,
+          11
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          260,
+          260,
+          265,
+          265,
+          270,
+          270,
+          275,
+          275
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 97026048,
+        "d2h_bytes": 214253568,
+        "h2d_stream_ms": 14.063639879226685,
+        "d2h_stream_ms": 44.059499979019165,
+        "median_h2d_ms_per_hit": 1.7553200125694275,
+        "median_hit_prefill_ms": 108.12880325317383,
+        "median_miss_prefill_ms": 192.13449096679688,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 201326592,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          22,
+          26,
+          31,
+          32,
+          32,
+          32
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          22,
+          28,
+          34,
+          40,
+          46,
+          49,
+          51,
+          53
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          7,
+          11
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          260,
+          260,
+          265,
+          265,
+          270,
+          270,
+          275,
+          275
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 97026048,
+        "d2h_bytes": 214253568,
+        "h2d_stream_ms": 13.708240032196045,
+        "d2h_stream_ms": 28.779380202293396,
+        "median_h2d_ms_per_hit": 1.7050999999046326,
+        "median_hit_prefill_ms": 107.52659225463867,
+        "median_miss_prefill_ms": 191.4663848876953,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      }
+    ]
+  },
+  "s2-high-tight": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 2,
+    "offload": "on",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": 0.375,
+    "reference": "s2-high-off",
+    "comparison": {
+      "equal_ids": 40,
+      "output_tokens": 40,
+      "max_selected_logprob_error": 0.0,
+      "atol": 0.1
+    },
+    "output_tokens": 40,
+    "mean_cycle_ms": 468.00271896645427,
+    "median_ttft_ms": 200.98863495513797,
+    "cycle_output_tokens_per_s": 8.546958891251045,
+    "hits": 0,
+    "misses": 10,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 37748736,
+        "host_parents": 6,
+        "host_occupied_parents": [
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "host_cached_entries": [
+          8,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13
+        ],
+        "host_evictions": [
+          0,
+          3,
+          10,
+          16,
+          23,
+          31,
+          39,
+          46,
+          52,
+          59
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 220545024,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 57.891600489616394,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 197.75804138183594,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 37748736,
+        "host_parents": 6,
+        "host_occupied_parents": [
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "host_cached_entries": [
+          8,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13
+        ],
+        "host_evictions": [
+          0,
+          3,
+          10,
+          16,
+          23,
+          31,
+          39,
+          46,
+          52,
+          59
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 220545024,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 50.39966011047363,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 197.92913818359375,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      }
+    ]
+  },
+  "s2-low-off": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 2,
+    "offload": "off",
+    "pattern": "low",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": null,
+    "reference": null,
+    "comparison": null,
+    "output_tokens": 40,
+    "mean_cycle_ms": 466.34353403933346,
+    "median_ttft_ms": 200.02066483721137,
+    "cycle_output_tokens_per_s": 8.57736777296589,
+    "hits": 0,
+    "misses": 10,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "linear_attention_1",
+          "page": 10,
+          "earlier_turn": 0,
+          "later_turn": 2
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 197.1454086303711,
+        "group_layout": []
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "linear_attention_1",
+          "page": 10,
+          "earlier_turn": 0,
+          "later_turn": 2
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 196.0364227294922,
+        "group_layout": []
+      }
+    ]
+  },
+  "s2-low-on": {
+    "model": "Qwen3.5-0.8B",
+    "tp": 2,
+    "offload": "on",
+    "pattern": "low",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": 2.0,
+    "reference": "s2-low-off",
+    "comparison": {
+      "equal_ids": 40,
+      "output_tokens": 40,
+      "max_selected_logprob_error": 0.0,
+      "atol": 0.1
+    },
+    "output_tokens": 40,
+    "mean_cycle_ms": 486.2301141023636,
+    "median_ttft_ms": 204.0467499755323,
+    "cycle_output_tokens_per_s": 8.226557516669772,
+    "hits": 0,
+    "misses": 10,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "linear_attention_1",
+          "page": 10,
+          "earlier_turn": 0,
+          "later_turn": 2
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 201326592,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          23,
+          27,
+          32,
+          32,
+          32,
+          32
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          24,
+          32,
+          40,
+          48,
+          56,
+          60,
+          60,
+          60
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          12,
+          20
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 226836480,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 69.97363913059235,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 201.1917724609375,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "linear_attention_1",
+          "page": 10,
+          "earlier_turn": 0,
+          "later_turn": 2
+        },
+        "max_sampled_allocated_bytes": 1213542912,
+        "max_sampled_reserved_bytes": 1400897536,
+        "host_arena_bytes": 201326592,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          23,
+          27,
+          32,
+          32,
+          32,
+          32
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          24,
+          32,
+          40,
+          48,
+          56,
+          60,
+          60,
+          60
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          12,
+          20
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267,
+          272,
+          272,
+          277,
+          277
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 226836480,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 30.316180109977722,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 200.61954498291016,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 4884480
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 786432
+          }
+        ]
+      }
+    ]
+  },
+  "m9-high-off": {
+    "model": "Qwen3.5-9B",
+    "tp": 2,
+    "offload": "off",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": null,
+    "reference": null,
+    "comparison": null,
+    "output_tokens": 24,
+    "mean_cycle_ms": 692.8772383835167,
+    "median_ttft_ms": 342.26985019631684,
+    "cycle_output_tokens_per_s": 5.773028436223427,
+    "hits": 0,
+    "misses": 6,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 9584828928,
+        "max_sampled_reserved_bytes": 10032775168,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 339.1978759765625,
+        "group_layout": []
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 9584828928,
+        "max_sampled_reserved_bytes": 10032775168,
+        "host_arena_bytes": 0,
+        "host_parents": 0,
+        "host_occupied_parents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_cached_entries": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267
+        ],
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "h2d_stream_ms": 0,
+        "d2h_stream_ms": 0,
+        "median_h2d_ms_per_hit": null,
+        "median_hit_prefill_ms": null,
+        "median_miss_prefill_ms": 338.5906524658203,
+        "group_layout": []
+      }
+    ]
+  },
+  "m9-high-on": {
+    "model": "Qwen3.5-9B",
+    "tp": 2,
+    "offload": "on",
+    "pattern": "high",
+    "device_tokens": 16384,
+    "rank_positions_agree": true,
+    "host_ratio": 2.0,
+    "reference": "m9-high-off",
+    "comparison": {
+      "equal_ids": 24,
+      "output_tokens": 24,
+      "max_selected_logprob_error": 0.04354977607727051,
+      "atol": 0.1
+    },
+    "output_tokens": 24,
+    "mean_cycle_ms": 567.147788281242,
+    "median_ttft_ms": 163.9666948467493,
+    "cycle_output_tokens_per_s": 7.052835403135604,
+    "hits": 4,
+    "misses": 2,
+    "ranks": [
+      {
+        "rank": 0,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 9584828928,
+        "max_sampled_reserved_bytes": 10032775168,
+        "host_arena_bytes": 536870912,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          22,
+          26
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          22,
+          28,
+          34,
+          40
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          260,
+          260,
+          265,
+          265
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267
+        ],
+        "h2d_bytes": 128188416,
+        "d2h_bytes": 342622208,
+        "h2d_stream_ms": 10.541020154953003,
+        "d2h_stream_ms": 48.23644030094147,
+        "median_h2d_ms_per_hit": 2.707390069961548,
+        "median_hit_prefill_ms": 142.03089141845703,
+        "median_miss_prefill_ms": 342.4767608642578,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 12877824
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 12877824
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 2097152
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "device_parents": 16,
+        "device_occupied_before_clear_range": [
+          5,
+          5
+        ],
+        "device_empty_after_clear_range": [
+          16,
+          16
+        ],
+        "reused_device_page": {
+          "group": "full_attention",
+          "page": 89,
+          "earlier_turn": 0,
+          "later_turn": 5
+        },
+        "max_sampled_allocated_bytes": 9584828928,
+        "max_sampled_reserved_bytes": 10032775168,
+        "host_arena_bytes": 536870912,
+        "host_parents": 32,
+        "host_occupied_parents": [
+          5,
+          9,
+          14,
+          18,
+          22,
+          26
+        ],
+        "host_cached_entries": [
+          8,
+          16,
+          22,
+          28,
+          34,
+          40
+        ],
+        "host_evictions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restored_tokens": [
+          0,
+          0,
+          260,
+          260,
+          265,
+          265
+        ],
+        "prefill_end": [
+          257,
+          257,
+          262,
+          262,
+          267,
+          267
+        ],
+        "h2d_bytes": 128188416,
+        "d2h_bytes": 342622208,
+        "h2d_stream_ms": 7.1758198738098145,
+        "d2h_stream_ms": 19.281100034713745,
+        "median_h2d_ms_per_hit": 1.7914799451828003,
+        "median_hit_prefill_ms": 142.50936126708984,
+        "median_miss_prefill_ms": 341.7371368408203,
+        "group_layout": [
+          {
+            "id": "linear_attention_0",
+            "packing": 1,
+            "bytes": 12877824
+          },
+          {
+            "id": "linear_attention_1",
+            "packing": 1,
+            "bytes": 12877824
+          },
+          {
+            "id": "full_attention",
+            "packing": 8,
+            "bytes": 2097152
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,19 +1,10 @@
-# Qwen3.5 on Ascend 910C：双 chip 张量并行
+# Qwen3.5 在 Ascend 910C 上的分层缓存
 
-AI Computing Systems 课程第二次作业。在同一张 Ascend 910C 卡的两个 chip 上，分别运行 Qwen3.5-0.8B、4B、9B 和 27B，使用 TokenSpeed 的原生 Engine 和 HCCL 实现 TP=2。
+AI Computing Systems 第三次作业。在 TokenSpeed 的 Host 缓存上适配了 Ascend 的状态恢复，并用 Qwen3.5-0.8B 和 9B 比较两种做法：释放设备缓存后重新计算前缀，或从 Host 读回前缀再继续推理。
 
-实验比较 TP1 与 TP2 的推理结果、延迟、吞吐和显存占用，并分析各层的权重切分、计算与通信时间线。
+- [实验设置与复现命令](examples/aics_host_cache/README.md)
+- [各组测量结果](examples/aics_host_cache/results.json)
+- [第一次作业 · 单 chip 适配](https://github.com/handofsilver/tokenspeed/tree/hw1-qwen35-ascend)
+- [第二次作业 · 双 chip 张量并行](https://github.com/handofsilver/tokenspeed/tree/hw2-qwen35-tp2)
 
-- [环境、模型准备与运行命令](examples/aics_qwen35_tp2/README.md)
-- [模型分片与通信位置](docs/recipes/qwen35-tp2-sharding.md)
-- [实验结果](examples/aics_qwen35_tp2/results.json)
-- [第一次作业：单 chip 适配](https://github.com/handofsilver/tokenspeed/tree/hw1-qwen35-ascend)
-
-## 上游项目
-
-代码基于 [lightseekorg/tokenspeed](https://github.com/lightseekorg/tokenspeed) 的 `cf898936350f46ac6d0443b154739beaf51fe8a0` 版本，沿用上游的 [MIT 许可证](LICENSE)。
-
-- [TokenSpeed 文档](https://lightseek.org/tokenspeed/)
-- [安装与入门](https://lightseek.org/tokenspeed/guides/getting-started)
-- [启动服务](https://lightseek.org/tokenspeed/guides/launching)
-- [并行配置](https://lightseek.org/tokenspeed/serving/parallelism)
+上游项目为 [lightseekorg/tokenspeed](https://github.com/lightseekorg/tokenspeed)，沿用其 [MIT 许可证](LICENSE)。

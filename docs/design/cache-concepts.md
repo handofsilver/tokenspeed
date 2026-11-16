@@ -337,8 +337,9 @@ guarantee without any call site visibly dropping a wait.
 
 The Host-transfer workspace resolves transport capability for its buffer
 binding before publishing consumer waits. NVIDIA mapped-Host transfers can
-use a single full-geometry H2D launch with per-layer ready flags; other paths
-publish per-layer events. Device-resident geometry is metadata, not evidence
+use a single full-geometry H2D launch with per-layer ready flags. Ascend
+direct DMA submits the full geometry on the load stream and gives every layer
+the same completion event. The layerwise fallback publishes one event per layer. Device-resident geometry is metadata, not evidence
 that a particular completion protocol is supported. Automatic DMA fallback
 is limited to unavailable Host-pointer mapping, scoped to that workspace and
 buffer binding; validation, allocation, and kernel-launch failures propagate.

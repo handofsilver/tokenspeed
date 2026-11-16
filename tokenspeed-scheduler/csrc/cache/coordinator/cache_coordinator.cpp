@@ -1339,6 +1339,7 @@ bool CacheCoordinator::evictHostCachedBlock(std::uint32_t group_id, CacheBlockLo
     if (!removed) {
         return false;
     }
+    ++host_evicted_blocks_;
     pruneTailIfUnreferenced(removed->content_hash);
     return true;
 }

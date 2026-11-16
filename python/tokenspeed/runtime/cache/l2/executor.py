@@ -1510,13 +1510,19 @@ class HostCacheExecutor:
                     flags = workspace.prepare_layer_ready(len(layer_slices), device)
                     for load_events, _ in active_trackers:
                         load_events.layer_ready_init_event.record(self.load_stream)
-            if mode.layer_ready:
+            if mode.layer_ready or device.type == "npu":
+                # Ascend restores all cache fields on one copy stream. Every
+                # consumer waits for the same event before reading its shard.
                 flag_offset = 0
                 for load_events, consumer_count in active_trackers:
-                    load_events.layer_ready_flags = flags[
-                        flag_offset : flag_offset + consumer_count
-                    ]
-                    load_events.wait_layer_ready = wait_layer_ready
+                    load_events.layer_ready_flags = (
+                        flags[flag_offset : flag_offset + consumer_count]
+                        if mode.layer_ready
+                        else None
+                    )
+                    load_events.wait_layer_ready = (
+                        wait_layer_ready if mode.layer_ready else None
+                    )
                     flag_offset += consumer_count
                 transfer_cache_blocks(
                     "h2d",

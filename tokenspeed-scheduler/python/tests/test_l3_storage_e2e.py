@@ -390,12 +390,17 @@ def test_l3_host_eviction_still_prefetches_registered_prefix() -> None:
     )
     scheduler = ts.Scheduler(cfg)
 
+    assert scheduler.host_pool_free_blocks() == cfg.num_host_pages - 1
+    assert scheduler.host_evicted_blocks() == 0
     r1 = _spec("r1", list(range(1, 9)))
     wb1 = _find_op(_run_to_finalize(scheduler, r1), ts.Cache.WriteBackOp)
     assert wb1 is not None
     _finish_and_reap(scheduler, "r1")
     _ack_write_back(scheduler, wb1.op_ids[0])
     scheduler.next_execution_plan()
+
+    assert scheduler.host_pool_cached_blocks() > 0
+    assert scheduler.host_evicted_blocks() == 0
 
     # Two churns in a row: the first's write-back replaces r1's Host entries,
     # and between them they recycle every Device page r1 left behind (the
@@ -409,6 +414,8 @@ def test_l3_host_eviction_still_prefetches_registered_prefix() -> None:
         _ack_write_back(scheduler, wb2.op_ids[0])
         scheduler.next_execution_plan()
 
+    assert scheduler.host_evicted_blocks() > 0
+    assert scheduler.host_pool_pinned_blocks() == 0
     r3_tokens = list(range(1, 10))
     _register_prompt(scheduler, r3_tokens)
     scheduler.submit_requests([_spec("r3", r3_tokens)])

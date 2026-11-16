@@ -103,6 +103,7 @@ public:
 
     // Test/diagnostic view of pdTransferInFlight by request id.
     bool PdTransferPinned(const std::string& request_id) const;
+    std::uint64_t HostEvictedBlocks() const { return coordinator_.HostEvictedBlocks(); }
     std::int32_t HostPoolCachedBlocks() const { return coordinator_.NumHostCachedBlocks(); }
     std::int32_t HostPoolFreeBlocks() const { return coordinator_.NumFreeHostLcmBlocks(); }
     std::int32_t HostPoolPinnedBlocks() const { return coordinator_.NumPinnedHostCachedBlocks(); }
